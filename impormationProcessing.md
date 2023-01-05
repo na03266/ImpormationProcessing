@@ -70,3 +70,15 @@
     워크 스루 Work-Through  자료 사전 배포, 작성중에 검토하고 결함 찾기
                             정적, 명세, 결과, 코드 등을 여러 사람이 검토하게 하는 것
     인스펙션 Inspection     저자를 제외하고 전문가가 검사하는 공식적인 법
+
+2. 화면 설계
+
+1) UI 요구사항 확인
+- UI 설계원칙 :직관성, 유효성, 학습성, 유연성
+- UI 용어
+    UX      사용자 경험, 느낌 반응 등
+    UI      사용자 인터페이스
+    CLI     Command Line Interface 문자열
+    GUI     Graphical User Interface 그래픽(아이콘, 버튼, 문자)
+    MUI     Menu User Interface 메뉴
+    NUI     Natural User Interface 움직임(멀티터치, 동작)
