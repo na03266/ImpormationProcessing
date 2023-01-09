@@ -106,3 +106,12 @@
 - 관계 대수   Select : σ조건(R) // Project : π속성리스트(R) // Join : R⋈S  // Division : R÷S
 
 - X(결정자) → Y(종속자) 
+
+2)물리 데이터 저장소 설계
+
+- 무결성(Integrity) 제약조건
+    개체 (Entity)       기본키(Primary key)를 구성하는 모든 속성은 널(Null)이나 중복값을 가지면 안된다. (Unique Index)
+    참조(Referential)   외래키(Foreign)는 참조할 수 없는 값을 가질 수 없다
+    속성 (Attribute)    속성의 값은 기본값, 널 여부, 도메인이 지정된 규칙을 준수해야함 (Check, null, not null, default)
+    사용자 정의         사용자의 의미적 요구사항 준수(Trigger, 사용자정의 데이터타입)
+    키 (Key)            같은 킷값을 가진 튜플 허용 x(Unique)
