@@ -132,3 +132,19 @@
 - HDFS(Hadoop Distributed File System) : 대용량 데이터 집합을 처리하는 응용 프로그램에 적합하도록 설계된 하둡 분산파일 시스템
 
 - 데이터마이닝 : 대규모 데이터 안에서 자동으로 통계적 규칙이나 패턴을 찾아내는 기술
+
+4. 통합 구현
+
+1) 연계 매커니즘 구성
+
+- 인스턴스 : 객체지향 프로그래밍에서 해당 클래스의 구조로 컴퓨터 저장공간에 할당된 실체
+
+- WSDL(Web Service Description Language) : 웹 서비스명, 제공위치, 메시지 포맷, 프로토콜 정보 등 웹 서비스에 대한 상세 정보가 기술된 XML 형식 언어
+
+- SOAP(Simple Object Access Protocol) : HTTP, HTTPS, SMTP 등을 사용하여 XML 기반메시지를 네트워크상태에서 교환하는 프로토콜
+
+- UDDI(Universal Description, Discovery and Integration) : 웹 서비스에 대한 정보의 공개 및 검색에 대한 방법을 정의하는 XML 기반의 공용 디렉토리 또는 프로토콜의 집합체
+
+- SOA(Service Oriented Architecture) : 서비스 지향 아키텍처(핵심기술 : UDDI, SOAP, WSDL)
+
+- JDBC(Java Database Connectivity) : Java와 DB 연결을 위한 표준 API
