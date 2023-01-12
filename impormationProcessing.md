@@ -148,3 +148,11 @@
 - SOA(Service Oriented Architecture) : 서비스 지향 아키텍처(핵심기술 : UDDI, SOAP, WSDL)
 
 - JDBC(Java Database Connectivity) : Java와 DB 연결을 위한 표준 API
+
+2) 내외부 연계 모듈 구현
+
+- EAI(Enterprise Application Integration) : Point to Point, Hub & Spoke, Message Bus, hybrid
+
+- ESB(Enterprise Service Bus) : 느슨한 결합(특정 서비스를 변경하더라도 연결된 다른 서비스에 영향x)
+
+- IPC(Inter Process Communication) : 운영체제에서 프로세스간 데이터를 주고받기 위한 통신기술		메시지큐, 공유메모리, 소켓, 세마포어(프로세스사이에 동기를 맞추는 기능)
