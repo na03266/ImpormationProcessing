@@ -156,3 +156,16 @@
 - ESB(Enterprise Service Bus) : 느슨한 결합(특정 서비스를 변경하더라도 연결된 다른 서비스에 영향x)
 
 - IPC(Inter Process Communication) : 운영체제에서 프로세스간 데이터를 주고받기 위한 통신기술		메시지큐, 공유메모리, 소켓, 세마포어(프로세스사이에 동기를 맞추는 기능)
+
+5.인터페이스 구현
+
+1) 인터페이스 기능 구현
+
+- JSON (JavaScript Object Notation) : 키-값 쌍 개방형 표준 포멧
+- XML(eXtensible Markup Language) : 데이터를 정의하는 규칙을 제공하는 확장가능한 마크업 언어, 					HTML과 달리 DTD가 유동적
+- DTD(Document Type Definition) : 문서 형식 정의 <!DOCTYPE html> 
+				구성요소 : Element, Attribute, Entity
+- AJAX(Asynchronous JavaScript and XML) : 비동기 통신 기술로 클라와 서버간에 XML 통신주요기술 : XML, Javascript, Dom, HTML, CSS, XSLT
+- DOM(Document Object Model) :  플랫폼과 언어에 중립적인 인터페이스		Core DOM(모든 문서타입), HTML DOM(HTML타입), XML DOM(XML타입)	
+
+- DB암호화 기법 :  API, Plug-in, TDE, Hybrid
