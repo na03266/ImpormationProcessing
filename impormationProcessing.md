@@ -169,3 +169,10 @@
 - DOM(Document Object Model) :  플랫폼과 언어에 중립적인 인터페이스		Core DOM(모든 문서타입), HTML DOM(HTML타입), XML DOM(XML타입)	
 
 - DB암호화 기법 :  API, Plug-in, TDE, Hybrid
+
+2) 인터페이스 구현 검증
+- 인터페이스 구현 검증도구(엑스피 엔셀워)
+	xUnit : 다양한 언어를 지원하는 단위테스트 프레임워크
+	STAF(Software Testing Automation Framework) : 개방형 테스트 프레임워크, 테스트대상 	 	환경에 데몬을 사용하여 테스트를 진행하고 통합하여 자동화하는 인터페이스 구현 검증 도구
+	FitNesse, NTAF, Selerium, watir
+- 인터페이스 감시도구 : 스카우터, 제니퍼
