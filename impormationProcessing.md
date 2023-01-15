@@ -176,3 +176,13 @@
 	STAF(Software Testing Automation Framework) : 개방형 테스트 프레임워크, 테스트대상 	 	환경에 데몬을 사용하여 테스트를 진행하고 통합하여 자동화하는 인터페이스 구현 검증 도구
 	FitNesse, NTAF, Selerium, watir
 - 인터페이스 감시도구 : 스카우터, 제니퍼
+
+6. 프로그래밍 언어 활용
+
+1) 기본 사항
+- -1은 2진수로 ~11111111임, 10000~는 –21억 정도 됨
+- 식별자는 대소문을 구별함.
+- a&&b = a가 False면 b를 실행 안 함. // a||b = a가 True면 b를 실행 안 함.
+- break (①for문 탈출 ②case문 탈출)
+- switch문은 break가 없을 경우 끝까지 동작함
+- for문의 코드가 한줄이면 괄호 생략이 가능함.
