@@ -186,3 +186,9 @@
 - break (①for문 탈출 ②case문 탈출)
 - switch문은 break가 없을 경우 끝까지 동작함
 - for문의 코드가 한줄이면 괄호 생략이 가능함.
+
+- 식별자 표기법
+    헝가리안    nScore      식별자 명 접두어
+    카멜        totalScore  뒷 단어 대문자
+    파스칼      TotalScore  첫 글자 대문자
+    스네이크    total_score 단어 사이 _
