@@ -201,3 +201,8 @@
 - 전역변수는 프로그램이 시작되면 변수가 생성되고 종료되면 변수가 소멸된다
 - 지역변수는 중괄호가 닫히는 시점에 소멸된다.
 - static 변수 : 블록 내외부 상관없이 선언할 수 있다. (블록내 선언, 블록안에서만 // 전역선언, 전체)
+- 자료형 *포인터 변수명 = &변수명  p=&arr[0], *(p+i) == *(&arr[0]+i) == *(&a[0][i]) == a[0][1]
+- 매개변수를 전달하려면 주소값(Reference)로 전달해야함.
+- strcat(String Concatenate), strcpy(String Copy), strcmp(String Compare), strlen(String Length), strrev(String Reverse),
+- sqrt(양의 제곱근 계산), ceil(소수점올림), floor(소수점내림)
+- rand(Random), srand(Seed Random), time(현재시간) atoi(ASCII to integer), itoa(atoi반대)
