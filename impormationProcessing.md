@@ -206,3 +206,9 @@
 - strcat(String Concatenate), strcpy(String Copy), strcmp(String Compare), strlen(String Length), strrev(String Reverse),
 - sqrt(양의 제곱근 계산), ceil(소수점올림), floor(소수점내림)
 - rand(Random), srand(Seed Random), time(현재시간) atoi(ASCII to integer), itoa(atoi반대)
+
+3)Java
+- 클래스 단위 구성
+- static변수는 시스템 전체에서 사용이 가능
+- for each >> for(제어변수:배열){문장;}
+- this는 현재 객체를 가리킴, 클래스내부의 변수와 메서드를 가르킨다. this를 안쓰면 파라미터로 받은 값을 가르키게됨.(why? 함수 안에 있어서 클래스 안에 있는 것 보다 더 가까움)
