@@ -266,3 +266,17 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     해싱 접근       디스크 블록주소를 레코드의 탐색 값에 대한 해싱함수로 얻는 주소로 직접 접근
     클러스터드      Clustered 한 테이블에 한 개만 설정, 삽입할 때마다 정렬
     넌클러스터드    Non-Clustered 한 테이블에 여러 개 설정 가능
+
+(2)DDL 명령어:CREATE, ALTER, DROP, TRUNCATE(오브젝트내용삭제)
+- create table 테이블명(컬럼명 데이터타입 [check(조건식), not null, default, unique, primary key])
+- alter table 테이블명 add<modify> 컬럼명 데이터타입 [제약조건]
+- alter table 테이블명 drop column 컬럼명  >> 컬럼 삭제
+- drop table 테이블명 [cascade|restrict]
+- truncate table 테이블명 : 테이블 내의 모든 데이터를 삭제하는 명령
+
+- create[or replace] view 뷰이름 as 조회쿼리;
+- drop view 뷰이름;
+
+- create [unique] index 인덱스명 on 테이블명(컬럼명1, 컬럼명2...);
+- alter [unique] index 인덱스명 on 테이블명(컬럼명1, 컬럼명2...);
+- drop index 인덱스명;
