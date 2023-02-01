@@ -280,3 +280,12 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
 - create [unique] index 인덱스명 on 테이블명(컬럼명1, 컬럼명2...);
 - alter [unique] index 인덱스명 on 테이블명(컬럼명1, 컬럼명2...);
 - drop index 인덱스명;
+
+(3) DML : select, insert, update, delete
+- select[all|distinct] 속성명1, 속성명2.. from 테이블명, [where][group by][having][order by];
+- where 조건 : in(값1, 값2), not in(값1, 값2), like[%,[],_,^], is null, is not null, and, or, not
+- select a.컬럼1, b.컬럼1 from 테이블1 a join 테이블 b on 조인조건 [where 검색조건]
+- 집합연산자 : union, union all, intersect(교집합), minus
+- insert into 테이블명(속성명1,~) values(데이터1, ~);
+- update 테이블명 set 속성명=데이터,~ where 조건;
+- delete from 테이블명 where 조건;
