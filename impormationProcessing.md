@@ -289,3 +289,7 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
 - insert into 테이블명(속성명1,~) values(데이터1, ~);
 - update 테이블명 set 속성명=데이터,~ where 조건;
 - delete from 테이블명 where 조건;
+
+(4) DCL : grant, revoke
+- grant 권한 on 테이블 to 사용자
+- revoke 권한 on 테이블 from 사용자
