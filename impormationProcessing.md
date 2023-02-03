@@ -293,3 +293,8 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
 (4) DCL : grant, revoke
 - grant 권한 on 테이블 to 사용자
 - revoke 권한 on 테이블 from 사용자
+
+2) 응용 SQL 작성하기
+- 다중 행 연산자 : in, any, some, all, exists
+- 집계함수 : count, sum, avg, max, min, stddev(표준편차), variance(분산)
+- 그룹함수 : rollup, cube, grouping sets
