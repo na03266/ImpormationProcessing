@@ -298,3 +298,6 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
 - 다중 행 연산자 : in, any, some, all, exists
 - 집계함수 : count, sum, avg, max, min, stddev(표준편차), variance(분산)
 - 그룹함수 : rollup, cube, grouping sets
+
+3) SQL활용 및 최적화
+- 절차형 sql : 프로시저, 사용자정의함수, 트리거
