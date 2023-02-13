@@ -371,7 +371,6 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     백도어 탐지 툴사용  백신 등 바이러스 툴 사용
 
 - 보안용어
-
     봇넷            감염됨 다수의 피씨들이 네트워크로 연결된 형태
     웜              스스로 복제하여 네트워크등의 연결을 통하여 전파하는 프로그램
     APT             Advanced Persistent Threat 지능형 지속 위협 종류 : 제로데이 익스플로잇, 드로퍼, 백도어
@@ -384,3 +383,9 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     Typosquatting   타이포스쿼팅, 가짜URL
                     정상과 비슷한 도메인의 이름을 등록해두고 자주 사용하는 사이트의 URL을 교묘하게 바꿔 가짜 사이트로 유도하는 등의 공격기법
     Switch Jamming  패킷을 브로드캐스트함. 스위치 기능을 마비시키는 공격
+
+- 역할기반 접근통제 : MAC, DAC, RBAC
+- 3A : Authentication, Authorization, Accounting
+
+- 인증관련기술 : SSO, Kerberos(대칭키 암호화 바탕의 티켓 기반의 인증 프로토콜)
+- 접근통제 보호 모델 : 벨-라파듈라(기밀성), 비바(무결성)
