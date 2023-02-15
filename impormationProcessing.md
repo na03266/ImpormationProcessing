@@ -402,3 +402,7 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     비밀키 암호화 기법 = 단일 키, 대칭 암호화 기법
     DES, 3-DES, AES, SEED, ARIA, MASK 등
     DES(Data Encryption Standard) 데이터 암호화 표준, 64비트의 평문을 46비트의 암호문으로.
+
+- 블록 암호화방식
+IDEA    International Data Encryption Algorithm     PGP(Pretty good Privacy)로 채택된 8라운드 알고리즘
+Skipjack    Clipper 칩에 내장됨 블록 알고리즘 32라운드 음성 암호화에 주로 사용됨
