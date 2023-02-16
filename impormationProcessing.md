@@ -404,5 +404,7 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     DES(Data Encryption Standard) 데이터 암호화 표준, 64비트의 평문을 46비트의 암호문으로.
 
 - 블록 암호화방식
-IDEA    International Data Encryption Algorithm     PGP(Pretty good Privacy)로 채택된 8라운드 알고리즘
-Skipjack    Clipper 칩에 내장됨 블록 알고리즘 32라운드 음성 암호화에 주로 사용됨
+    IDEA    International Data Encryption Algorithm     PGP(Pretty good Privacy)로 채택된 8라운드 알고리즘
+    Skipjack    Clipper 칩에 내장됨 블록 알고리즘 32라운드 음성 암호화에 주로 사용됨
+    
+-  해시 암호화 알고리즘 MD5(Message Digest 5) : UNIX에서 일반 계정의 비밀번호 저장 시 사용
