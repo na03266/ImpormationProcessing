@@ -406,5 +406,9 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
 - 블록 암호화방식
     IDEA    International Data Encryption Algorithm     PGP(Pretty good Privacy)로 채택된 8라운드 알고리즘
     Skipjack    Clipper 칩에 내장됨 블록 알고리즘 32라운드 음성 암호화에 주로 사용됨
-    
+
 -  해시 암호화 알고리즘 MD5(Message Digest 5) : UNIX에서 일반 계정의 비밀번호 저장 시 사용
+
+-  IPSec : IP 패킷 단위로 암호화, 인증, 키 관리를 통해 보안 서비스를 제공해줌
+-  SSL/TLS : IPSec와는 다르게 클라와 서버간에 상호인증, 암호방식에 대해 협상을 거침(443포트)
+-  S-HTTP : 클라와 서버간에 전송되는 모든 메시지를 각각 암호화하여 전송(shttp://사용)
