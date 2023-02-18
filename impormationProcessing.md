@@ -412,3 +412,15 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
 -  IPSec : IP 패킷 단위로 암호화, 인증, 키 관리를 통해 보안 서비스를 제공해줌
 -  SSL/TLS : IPSec와는 다르게 클라와 서버간에 상호인증, 암호방식에 대해 협상을 거침(443포트)
 -  S-HTTP : 클라와 서버간에 전송되는 모든 메시지를 각각 암호화하여 전송(shttp://사용)
+
+2) 소프트웨어 개발 보안 구현
+-  XSS(Cross Site Scripting) 웹 페이지에 포함된 부적절한 스크립트 실행
+-  SQL Injection : SQL 구문을 어플리케이션에 삽입해서 데이터베이스를 공격
+- 네트워크보안 솔루션
+    WAF     Web Application Firewall 웹에서 XSS, SQL Injection 등을 탐지하고 차단하는 역할
+    SIEM    Security Information Event Management : SIM+SEM
+    TKIP    Temporal Key Integrity Protocol 임시 키 무결성 프로토콜
+    VPN     Virtual Private Network 가상 사설망, 공중망으로 사설망 효과를 얻기 위한 기술
+
+- 비즈니스 연속성 계획 : BIA, RTO, RPO, DRP, DRS
+- DRS유형 : Mirror, Hot, warm, cold
