@@ -424,3 +424,21 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
 
 - 비즈니스 연속성 계획 : BIA, RTO, RPO, DRP, DRS
 - DRS유형 : Mirror, Hot, warm, cold
+
+- 보안용어
+    트립와이어      (Tripwire)  시스템 파일 등 변조와 추가 등을 MD5, SHA, CRC-32 등을 이용해 검사하는 도구, 백도어 탐지
+    SSH Protocol    스니핑의 공격을 막기 위해 개발됨, 22번 포트 사용    유닉스 기반의 데이터 기밀성을 보장할 수 있음
+    부인 방지       Non-repudiation     메시지의 송 수신자가 송 수신 사실을 부인하지 못하도록 하는 방법
+    SSL             Secure Socket Layer 전송계층 프로토콜, 넷스케이프사가 정한 인터넷 통신 규약 프로토콜
+    TLS             Transport Layer Security    SSL을 기반으로 만들어진 인터넷 커뮤니케이션을 위한 암호화 보안 프로토콜 안전한 연결과 압축, 암호화를 담당
+    SDN             Software Defined Networking 스위치 라우터 등 하드웨어에 의존하는 네트워크 체계에서 소프트웨어로 네트워크를 제어 관리하기 위해 개발됨
+    HSM             Hardware Security Module    USB 형태의 스마트칩을 사용하는 형태(보안토큰)
+    Reverse Telnet  서버의 권한을 획득한 후 서버에서 먼저 공격자 PC로 연결하게 하여 공격자가 직접 명령을 입력하여 개인정보를 전송하는 등의 공격
+
+    Digital Forensics   디지털 포렌식   컴퓨터와 인터넷을 기반으로 이루어지는 범죄 수사를 위한 과학수사 방법
+    Brute Force Attack  무차별 대입 공격    주어진 경우의 수를 모두 대입하여 암호를 크랙 하는 기법
+
+    Kill Switch     분실한 기기에 저장된 개인정보를 원격으로 삭제   
+    ISMS            Information Security Management System 개인정보 관리체계 인증   기술적, 물리적, 관리적 보호조치 등으로 종합적인 정보보호 관리체계에 대한 인증체계
+    PMS             Production Information Management System 개인정보보호 관리체계 인증 ISMS 보호조치 기준을 달성하기 위한 위협 정도의 평가 및 대책 수립 및 운영을 위한 인증체계
+    ISMS-P          Production Information & Information Security Management System     ISMS + PMS임
