@@ -442,3 +442,8 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     ISMS            Information Security Management System 개인정보 관리체계 인증   기술적, 물리적, 관리적 보호조치 등으로 종합적인 정보보호 관리체계에 대한 인증체계
     PMS             Production Information Management System 개인정보보호 관리체계 인증 ISMS 보호조치 기준을 달성하기 위한 위협 정도의 평가 및 대책 수립 및 운영을 위한 인증체계
     ISMS-P          Production Information & Information Security Management System     ISMS + PMS임
+
+10. 어플리케이션 테스트 관리
+
+1) 어플리케이션 테스트 설계
+- 살충제 패러독스 : 동일한 테스트케이스 반복사용으로 새로운 문제점을 발견할 수 없다.
