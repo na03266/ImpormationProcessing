@@ -462,3 +462,11 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     데이터 흐름 검사    Data Flow Testing 변수의 사용에 따라 검사경로 선택
 
 - 그레이박스 테스트 : 프로그램 내부 구조의 일부만 알고 수행하는 검사
+
+- 블랙박스 테스트 (동경결상 유분페원비오)
+
+    동치 분할 검사      Equivalence Partitioning Testing    입력조건에 중점을 두고 하나의 입력조건에 타당한 값과 그렇지 못한 값을 설정하여  
+                    해당 입력 자료에 맞는 결과가 출력되는지 보는 검사
+    경계값 분석         Boundary Value Analysis 경계값에서 생기는 오류
+    원인-효과그래픽     Cause-Effect Graphic Testing 원인-결과 그래프
+    비교 검사           Comparison Testing 여러버전에서 검사값 같은지
