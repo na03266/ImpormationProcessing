@@ -514,3 +514,12 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
 
 1) 운영체제 특징
 - 메모리 배치 기법 : 반입 / 배치 / 할당 / 교체
+
+- 메모리 할당 기법
+    FIFO        First In First Out 비 선점 방식 = FCFS(First Come First Serviced) 
+    SJF         Shortest Job First 비 선점 방식
+    Priority    비 선점 방식, 프로세스 자체적으로 우선순위를 순위대로 실행, 기아 상태(Starvation)가 유발될 수 있으며 에이징(Aging) 기법사용
+    HRN         Highest Response ratio Next (대기시간 + 서비스시간)/서비스시간 큰 숫자 우선
+    RR          Round Robin 선점 방식 시분할 시스템(Time Sharing System)을 위해 고려됨, 시간 할당량(Time Slice)에 따라 달라짐
+    SRT         Shortest Remaining Time First
+    → 에이징(Aging) : 무한 정지 방지 수단, 기다린 시간에 비례하여 프로세스에게 우선순위 부여
