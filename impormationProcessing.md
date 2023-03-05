@@ -523,3 +523,12 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     RR          Round Robin 선점 방식 시분할 시스템(Time Sharing System)을 위해 고려됨, 시간 할당량(Time Slice)에 따라 달라짐
     SRT         Shortest Remaining Time First
     → 에이징(Aging) : 무한 정지 방지 수단, 기다린 시간에 비례하여 프로세스에게 우선순위 부여
+
+- 디스크 스케쥴링  
+    FCFS        First Come First Serviced
+    SSTF        탐색 거리가 가장 짧은 것
+    SCAN        한 방향으로 이동하며 끝에 도착하면 반대 방향으로 스캔 진행
+    C-SCAN      항상 밖에서 안으로 움직이면서 가장 짧은 탐색 거리를 갖는 요청을 서비스
+    N-step SCAN 새로 추가된 요청은 다음에 서비스하는 것, SCAN의 방식을 사용
+    LOOK        양끝을 왕복하지만 움직이는 방향에 요청이 없으면 그 자리에서 방향을 바꿈
+    Eschenbach  C-SCAN처럼 움직이면서 모든 실린더가 요청이 있든 없든 전체 트랙이 한 바퀴 회전할 동안의 서비스를 받는 기법
