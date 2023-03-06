@@ -532,3 +532,10 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     N-step SCAN 새로 추가된 요청은 다음에 서비스하는 것, SCAN의 방식을 사용
     LOOK        양끝을 왕복하지만 움직이는 방향에 요청이 없으면 그 자리에서 방향을 바꿈
     Eschenbach  C-SCAN처럼 움직이면서 모든 실린더가 요청이 있든 없든 전체 트랙이 한 바퀴 회전할 동안의 서비스를 받는 기법
+
+- 교착상태(Deadlock) 해결 기법 : 예방, 회피, 발견, 복구 
+    예방(Prevention)    상호 배제, 점유와 대기, 비 선점, 환형 대기가 안 생기게 하는 것
+    회피(Avoidance)     은행가 알고리즘(Banker’s Algorithm)
+    발견(Detection)     자원할당그래프(Resource - Allocation Graph)
+    회복(Recovery)      교착상태에 있는 프로그램을 종료하거나 자원을 선점하여 다른 애한테 줌
+
