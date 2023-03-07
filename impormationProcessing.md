@@ -539,3 +539,40 @@ values = {1, 2, 3, 4}   a,b, *c = values    다중 대입가능   a= 1, b = 2, c
     발견(Detection)     자원할당그래프(Resource - Allocation Graph)
     회복(Recovery)      교착상태에 있는 프로그램을 종료하거나 자원을 선점하여 다른 애한테 줌
 
+2) 네트워크 기초 활용하기
+ - OSI(Open System Interconnection) 7 Layer
+ 
+물리
+Physical
+0과 1의 비트정보를 회선에 보내기위한 전기적신호 변환
+RS-232C, v.24/28, Ethernet, FDDI(비트)
+
+데이터링크
+Data Link
+인접 시스템 간 데이터 전송, 전송오류 제어, 동기화, 흐름제어 등의 전송기능 제공
+HDLC, LLC, LAPB, LAPD, PPP, 이더넷(프레임)
+
+네트워크
+Network
+단말기 간 데이터 전송을 위한 최적화된 경로 제공
+X.25, ARP, RARP, IPX, IP, ICMP(패킷)
+
+전송
+Transport
+신뢰성있는 통신 보장, 데이터의 분할과 재조립, 흐름제어, 오류제어, 혼잡제어 등을 담당.
+TCP, UDP (세그먼트)
+
+세션
+Session
+연결 접속 및 동기 제어
+SIP, SDP, RPC, NetBIOS, SSH, TLS (데이터)
+
+표현
+Presentation
+데이터 형식 설정과 부호교환, 암/복호화
+MPEG, SSL, JPEG (데이터)
+
+응용
+Application
+사용자와 네트워크 간 응용서비스 연결, 데이터 생성
+HTTP(80), TELNET(23), FTP(21, 전송은 20), SMTP(25) (데이터)
