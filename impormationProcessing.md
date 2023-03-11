@@ -599,4 +599,7 @@ HTTP(80), TELNET(23), FTP(21, 전송은 20), SMTP(25) (데이터)
     같은 네트워크 상의 모든 장치에게 패킷을 전송하는 주소 0/24+α => 
     동시에 그룹으로 지정된 장치들이 통신할 때 사용하는 주소
 
-
+- IPv4에서 IPv6로 전환전략
+    Dual Stack          하나의 시스템에서 IPv4와 IPv6 모두 지원
+    Tunneling           IPv4망에서 IPv6패킷을 캡슐화 및 역캡슐화
+    Header Translation  IPv4 및 IPv6 전용 단말 간의 프로토콜 변환을 지원
