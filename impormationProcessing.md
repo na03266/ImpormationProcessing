@@ -603,3 +603,7 @@ HTTP(80), TELNET(23), FTP(21, 전송은 20), SMTP(25) (데이터)
     Dual Stack          하나의 시스템에서 IPv4와 IPv6 모두 지원
     Tunneling           IPv4망에서 IPv6패킷을 캡슐화 및 역캡슐화
     Header Translation  IPv4 및 IPv6 전용 단말 간의 프로토콜 변환을 지원
+
+- IGP(내부 게이트웨이 프로토콜)
+    RIP     Routing Information Protocol 거리 벡터 15홉 이하
+    OSPF    Open Shortest Path First 링크 상태 89번 프로토콜
