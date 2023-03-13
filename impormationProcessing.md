@@ -607,3 +607,10 @@ HTTP(80), TELNET(23), FTP(21, 전송은 20), SMTP(25) (데이터)
 - IGP(내부 게이트웨이 프로토콜)
     RIP     Routing Information Protocol 거리 벡터 15홉 이하
     OSPF    Open Shortest Path First 링크 상태 89번 프로토콜
+
+- 패킷 교환 방식
+    가상회선    Virtual Circuit Packet Switching
+                물리적 회선을 공유하면서도 회선이 할당된 것처럼 동작. 각 단계를 거치는 축적교환
+                미리 정해진 경로, 데이터 도착순서 고정적(송신순서와 일치)
+    데이터그램  Datagram Packet Switching
+            패킷 경로를 동적으로 설정. 재순서화와 조립 과정, 데이터 도착순서 가변적
