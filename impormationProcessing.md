@@ -620,3 +620,10 @@ HTTP(80), TELNET(23), FTP(21, 전송은 20), SMTP(25) (데이터)
     브리지      같은 프로토콜을 사용하는 근거리 장치 연결
     라우터      서로 다른 네트워크 간의 데이터 전송, 경로 설정
     게이트웨이  이기종 프로토콜을 사용하는 망을 서로 연결하는 장치 또는 시스템
+
+- 네트워크 관련 용어
+    ad-hock Network 애드혹 네트워크, 무선 랜카드를 보유한 두 단말기 간에 무선 통신
+    Zing            NFC(Neat Field Communication)를 의미함
+    NAT             Network Address Translation 주소 변환 기능, IPv4의 주소 부족문제 해결을 위한 기술
+    Piconet         블루투스나 UWB 통신 기술로, 상황에 따라 기기 간의 임시 네트워크를 구축
+    스마트그리드, IoT, Zigbee, MQTT, 메시 네트워크 등
