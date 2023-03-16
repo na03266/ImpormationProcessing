@@ -627,3 +627,13 @@ HTTP(80), TELNET(23), FTP(21, 전송은 20), SMTP(25) (데이터)
     NAT             Network Address Translation 주소 변환 기능, IPv4의 주소 부족문제 해결을 위한 기술
     Piconet         블루투스나 UWB 통신 기술로, 상황에 따라 기기 간의 임시 네트워크를 구축
     스마트그리드, IoT, Zigbee, MQTT, 메시 네트워크 등
+
+- 소프트웨어 관련 신기술 용어
+    SaaS    Software as a Service           서비스로서의 소프트웨어
+    IaaS    Infrastructure as a Service     서비스로서의 인프라(서버, 스토리지, 네트워크)
+    PaaS    Platform as a Service           서비스로서의 플랫폼(개발 요소들과 실행환경)
+    BaaS    Blockchain as a Service         서비스로서의 블록체인
+    TensorFlow      머신러닝과 딥러닝에 특화    구글 브레인팀이 제작한 오픈소스 소프트웨어 라이브러리
+    Micro Services Architecture             마이크로 서비스 아키텍처, 단일 프로그램을 각 컴포넌트별로 나누어 작은 서비스의 조합으로 구축
+    PaaS-Ta, 그레이웨어, 메타버스, 메시업, 
+
