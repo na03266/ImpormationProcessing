@@ -637,3 +637,14 @@ HTTP(80), TELNET(23), FTP(21, 전송은 20), SMTP(25) (데이터)
     Micro Services Architecture             마이크로 서비스 아키텍처, 단일 프로그램을 각 컴포넌트별로 나누어 작은 서비스의 조합으로 구축
     PaaS-Ta, 그레이웨어, 메타버스, 메시업, 
 
+- 인프라 관련 용어
+    데이터 레이크   Data Lake   
+                    방대한 양의 원본 데이터를 저장하는 중앙 데이터 저장소, 머신 러닝, 예측 분석, 데이터 검색 등의 분석이 가능하며 스토리지 비용이 낮다.
+    데이터 웨어하우스   Data Warehouse  기업의 의사결정을 지원하기 위한 데이터 관리의 기능을 제공하는 데이터 저장소
+
+    VDW         Virtual Data Warehouse 가상 데이터 웨어하우스
+    LOD         Linked Open Data 개방형 연결 데이터
+    Dark Data   활용되지 않는 데이터 ex) 비정형 데이터 (음성, 사진, 동영상 등)
+    Stomp       Simple Text Oritented Messaging Protocol 스트리밍 문자 지향 메시지 프로토콜 발행 구독 매커니즘 제공
+    Crawler     스스로 페이지를 자동으로 방문해서 콘텐츠 및 URL을 추출하는 웹 로봇
+    디지털아카이빙, 메타데이터, 마이 데이터, 데이터 마트, 데이터마이닝, 스쿱, 맵리듀스
