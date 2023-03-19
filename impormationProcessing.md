@@ -658,3 +658,13 @@ HTTP(80), TELNET(23), FTP(21, 전송은 20), SMTP(25) (데이터)
     Dicing      데이터의 깊이와 분석 차원을 마음대로 바꿔가며 셀들의 부분 집합을 선택하여 심도 있는 분석을 할 수 있는 기능
     Roll-Up     분석할 항목에 대해 한 차원의 계층 구조를 따라 단계적으로 구체적인 내용의 상세 데이터로부터 요약된 형태의 데이터로 접근하는 기능
     Drill-Down  분석할 항목에 대해 한 차원의 계층 구조를 따라 단계적으로 요약된 내용의 상세 데이터로부터 상세 데이터로 접근하는 기능
+
+3) 기본 개발환경 구축하기
+
+- 스토리지 시스템
+    RAID    Redundant Array of Inexpensive Disks 다중 하드디스크 드라이브
+            다중 하드디스크 드라이브들 사이에서 데이터를 나누고 중복할 수 있는 체계
+    DAS     Direct Attached Storage  직접 연결
+    NAS     Network Attached Storage  네트워크 연결
+    SAN     Storage Area Network  스토리지 전용 네트워크
+    CDN     효율적인 콘텐츠 전달을 위한 여러개의 노드를 가진 네트워크에 데이터를 저장하여 제공하는 시스템
