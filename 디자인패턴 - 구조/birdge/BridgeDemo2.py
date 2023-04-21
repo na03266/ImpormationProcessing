@@ -27,3 +27,18 @@ class CupWithMaterial(Cup):
 
     def drink(self):
         print(f"You drank from the {self._material.get_material()} cup.")
+
+# 플라스틱 재질 구현
+class Plastic(Material):
+    def get_material(self):
+        return "plastic"
+
+# 유리 재질 구현
+class Glass(Material):
+    def get_material(self):
+        return "glass"
+
+# 종이 재질 구현
+class Paper(Material):
+    def get_material(self):
+        return "paper"
