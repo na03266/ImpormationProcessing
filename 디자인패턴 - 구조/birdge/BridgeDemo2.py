@@ -42,3 +42,17 @@ class Glass(Material):
 class Paper(Material):
     def get_material(self):
         return "paper"
+# 플라스틱 컵 생성
+plastic_cup = CupWithMaterial(Plastic())
+plastic_cup.fill("water")
+plastic_cup.drink()
+
+# 유리 컵 생성
+glass_cup = CupWithMaterial(Glass())
+glass_cup.fill("orange juice")
+glass_cup.drink()
+
+# 종이 컵 생성
+paper_cup = CupWithMaterial(Paper())
+paper_cup.fill("coffee")
+paper_cup.drink()
