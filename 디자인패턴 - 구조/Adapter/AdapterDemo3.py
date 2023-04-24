@@ -31,3 +31,22 @@ class InflearnAccount: # 인프런 계정정보 살펴보기
         # 인증 절차 생략
         print("인프런 로그인 성공")
         return self.email + InflearnAccount.INFLEARN_SECRET + self.password
+
+from abc import ABC, abstractmethod
+
+class SocialNetworkAuthTarget(ABC): #타겟 인터페이스
+    @abstractmethod
+    def get_service_name(self):
+        pass
+
+    @abstractmethod
+    def get_user_name(self):
+        pass
+
+    @abstractmethod
+    def get_secret(self):
+        pass
+
+    @abstractmethod
+    def get_token(self):
+        pass
