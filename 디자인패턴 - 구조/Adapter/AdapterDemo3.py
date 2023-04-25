@@ -50,3 +50,19 @@ class SocialNetworkAuthTarget(ABC): #타겟 인터페이스
     @abstractmethod
     def get_token(self):
         pass
+
+class InflearnSocialNetworkAuthAdapter(SocialNetworkAuthTarget): # 인프런 어댑터 구현
+    def __init__(self, inflearn_account):
+        self.inflearn_account = inflearn_account
+
+    def get_service_name(self):
+        return "INFLEARN"
+
+    def get_user_name(self):
+        return self.inflearn_account.get_user_name()
+
+    def get_secret(self):
+        return InflearnAccount.INFLEARN_SECRET
+
+    def get_token(self):
+        return self.inflearn_account.login()
