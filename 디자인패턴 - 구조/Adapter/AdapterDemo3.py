@@ -66,3 +66,19 @@ class InflearnSocialNetworkAuthAdapter(SocialNetworkAuthTarget): # 인프런 어
 
     def get_token(self):
         return self.inflearn_account.login()
+
+class KakaoSocialNetworkAuthAdapter(SocialNetworkAuthTarget): #카카오 어댑터 구현
+    def __init__(self, kakao_account):
+        self.kakao_account = kakao_account
+
+    def get_service_name(self):
+        return "KAKAO"
+
+    def get_user_name(self):
+        return self.kakao_account.name
+
+    def get_secret(self):
+        return KakaoAccount.KAKAO_SECRET
+
+    def get_token(self):
+        return self.kakao_account.get_auth_token()
