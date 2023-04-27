@@ -90,3 +90,49 @@ class SocialNetworkAuthService: # 로그인 메서드 생성
         print("이용하는 서비스:", social_network_auth_target.get_service_name())
         print("이름:", social_network_auth_target.get_user_name())
         print("토큰:", social_network_auth_target.get_token())
+
+
+class KakaoAccount: #클라이언트 코드 구성
+    def __init__(self, id, password, email, name):
+        self.id = id
+        self.password = password
+        self.email = email
+        self.name = name
+
+class InflearnAccount:
+    def __init__(self, email, password, username):
+        self.email = email
+        self.password = password
+        self.username = username
+
+class KakaoSocialNetworkAuthAdapter(SocialNetworkAuthTarget):
+    def __init__(self, kakao_account):
+        self.kakao_account = kakao_account
+
+class InflearnSocialNetworkAuthAdapter(SocialNetworkAuthTarget):
+    def __init__(self, inflearn_account):
+        self.inflearn_account = inflearn_account
+
+
+class SocialNetworkAuthService:
+    @staticmethod
+    def social_login(social_network_auth_target):
+        print("소셜 로그인을 시작합니다.")
+        print("이용하는 서비스:", social_network_auth_target.get_service_name())
+        print("이름:", social_network_auth_target.get_user_name())
+        print("토큰:", social_network_auth_target.get_token())
+
+# 파이썬에서도 main 함수를 사용하여 동일한 동작을 수행합니다.
+def main():
+    # Kakao 계정 생성
+    kakao_account = KakaoAccount(id="kakaoman", password="kakaopassword", email="kakaoman@kakao.com", name="카카오제이크서")
+
+    # Inflearn 계정 생성
+    inflearn_account = InflearnAccount(email="me@naver.com", password="mypassword", username="인프런제이크서")
+
+    # SocialNetworkAuthService를 사용하여 로그인
+    SocialNetworkAuthService.social_login(KakaoSocialNetworkAuthAdapter(kakao_account))
+    SocialNetworkAuthService.social_login(InflearnSocialNetworkAuthAdapter(inflearn_account))
+
+if __name__ == "__main__":
+    main()
