@@ -17,7 +17,6 @@ class SocialNetworkAuthTarget(ABC):
     def get_token(self):
         pass
 
-
 class KakaoAccount:
     KAKAO_SECRET = "KA_SECRET"
 
@@ -77,9 +76,17 @@ class InflearnSocialNetworkAuthAdapter(SocialNetworkAuthTarget):
     def get_token(self):
         return self.inflearn_account.login()
 
+class SocialNetworkAuthService:
+    @staticmethod
+    def social_login(social_network_auth_target):
+        print("소셜 로그인을 시작합니다.")
+        print("이용하는 서비스:", social_network_auth_target.get_service_name())
+        print("이름:", social_network_auth_target.get_user_name())
+        print("토큰:", social_network_auth_target.get_token())
+
 def main():
     # Kakao 계정 생성
-    kakao_account = KakaoAccount(id="kakaoman", password="kakaopassword", name="카카오제이크서", email="kakaoman@kakao.com")
+    kakao_account = KakaoAccount(id="kakaoman", password="kakaopassword", email="kakaoman@kakao.com", name="카카오제이크서")
 
     # Inflearn 계정 생성
     inflearn_account = InflearnAccount(email="me@naver.com", password="mypassword", username="인프런제이크서")
@@ -90,4 +97,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
