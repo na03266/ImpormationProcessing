@@ -18,3 +18,13 @@ class Item(ABC):
     def get_name(self):
         pass
 
+class DefaultItem(Item):
+    def __init__(self, price, name):
+        self.price = price
+        self.name = name
+
+    def get_price(self):
+        return self.price
+
+    def get_name(self):
+        return self.name
