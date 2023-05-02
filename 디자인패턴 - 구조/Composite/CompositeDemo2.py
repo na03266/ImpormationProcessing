@@ -28,3 +28,17 @@ class DefaultItem(Item):
 
     def get_name(self):
         return self.name
+
+
+class ItemStorage:
+    @abstractmethod
+    def add_item(self, item):
+        pass
+
+    @abstractmethod
+    def remove_item(self, item):
+        pass
+
+    @abstractmethod
+    def get_all_price(self):
+        pass
