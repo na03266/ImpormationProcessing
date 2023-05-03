@@ -42,3 +42,29 @@ class ItemStorage:
     @abstractmethod
     def get_all_price(self):
         pass
+
+class ItemStorage(ABC):
+    @abstractmethod
+    def add_item(self, item):
+        pass
+
+    @abstractmethod
+    def remove_item(self, item):
+        pass
+
+    @abstractmethod
+    def get_all_price(self):
+        pass
+
+class DefaultItemStorage(ItemStorage):
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def remove_item(self, item):
+        self.items.remove(item)
+
+    def get_all_price(self):
+        return sum(item.get_price() for item in self.items)
