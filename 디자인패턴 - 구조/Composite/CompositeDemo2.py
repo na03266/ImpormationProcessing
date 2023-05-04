@@ -68,3 +68,6 @@ class DefaultItemStorage(ItemStorage):
 
     def get_all_price(self):
         return sum(item.get_price() for item in self.items)
+
+class Inventory(DefaultItemStorage):
+    pass
