@@ -71,3 +71,35 @@ class DefaultItemStorage(ItemStorage):
 
 class Inventory(DefaultItemStorage):
     pass
+
+class Item:
+    def get_price(self):
+        pass
+
+    def get_name(self):
+        pass
+
+class DefaultItemStorage(ItemStorage):
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def remove_item(self, item):
+        self.items.remove(item)
+
+    def get_all_price(self):
+        return sum(item.get_price() for item in self.items)
+
+class ItemBag(DefaultItemStorage, Item):
+    def __init__(self, price, name):
+        super().__init__()
+        self.name = name
+        self.price = price
+
+    def get_price(self):
+        return self.get_all_price() + self.price
+
+    def get_name(self):
+        return self.name
