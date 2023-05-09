@@ -17,3 +17,11 @@ class CheesePizza(Pizza):
 class BulgogiPizza(Pizza):
     def pizza_name(self):
         return "불고기 " + super().pizza_name()
+
+
+from abc import ABC, abstractmethod
+
+class PizzaService(ABC):
+    @abstractmethod
+    def pizza_name(self):
+        pass
