@@ -25,3 +25,7 @@ class PizzaService(ABC):
     @abstractmethod
     def pizza_name(self):
         pass
+
+class DefaultPizza(PizzaService):
+    def pizza_name(self):
+        return "피자"
