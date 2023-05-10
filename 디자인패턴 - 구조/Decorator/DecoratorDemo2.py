@@ -29,3 +29,17 @@ class PizzaService(ABC):
 class DefaultPizza(PizzaService):
     def pizza_name(self):
         return "피자"
+
+
+class PizzaDecorator(PizzaService, ABC):
+    def __init__(self, pizza_service):
+        self.pizza_service = pizza_service
+
+    @abstractmethod
+    def pizza_name(self):
+        pass
+
+class PizzaService(ABC):
+    @abstractmethod
+    def pizza_name(self):
+        pass
