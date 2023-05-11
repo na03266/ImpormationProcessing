@@ -43,3 +43,10 @@ class PizzaService(ABC):
     @abstractmethod
     def pizza_name(self):
         pass
+
+class CheeseDecorator(PizzaDecorator):
+    def __init__(self, pizza_service):
+        super().__init__(pizza_service)
+
+    def pizza_name(self):
+        return "치즈 " + super().pizza_name()
