@@ -50,3 +50,10 @@ class CheeseDecorator(PizzaDecorator):
 
     def pizza_name(self):
         return "치즈 " + super().pizza_name()
+
+class BulgogiDecorator(PizzaDecorator):
+    def __init__(self, pizza_service):
+        super().__init__(pizza_service)
+
+    def pizza_name(self):
+        return "불고기 " + super().pizza_name()
