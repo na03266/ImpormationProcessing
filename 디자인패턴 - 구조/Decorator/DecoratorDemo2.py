@@ -57,3 +57,43 @@ class BulgogiDecorator(PizzaDecorator):
 
     def pizza_name(self):
         return "불고기 " + super().pizza_name()
+
+class PizzaService:
+    def pizza_name(self):
+        pass
+
+class DefaultPizza(PizzaService):
+    def pizza_name(self):
+        return "피자"
+
+class PizzaDecorator(PizzaService):
+    def __init__(self, pizza_service):
+        self.pizza_service = pizza_service
+
+    def pizza_name(self):
+        return self.pizza_service.pizza_name()
+
+class BulgogiDecorator(PizzaDecorator):
+    def pizza_name(self):
+        return "불고기 " + super().pizza_name()
+
+class CheeseDecorator(PizzaDecorator):
+    def pizza_name(self):
+        return "치즈 " + super().pizza_name()
+
+def main():
+    enabled_bulgogi = True
+    enabled_cheese = True
+
+    pizza = DefaultPizza()
+
+    if enabled_bulgogi:
+        pizza = BulgogiDecorator(pizza)
+
+    if enabled_cheese:
+        pizza = CheeseDecorator(pizza)
+
+    print(pizza.pizza_name())
+
+if __name__ == "__main__":
+    main()
