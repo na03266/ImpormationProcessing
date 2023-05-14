@@ -6,80 +6,32 @@
 캐싱, 로깅, 검증과 같은 기능에 쓰일 수 있다.
 """
 
-class Pizza:
-    def pizza_name(self):
-        return "피자"
-
-class CheesePizza(Pizza):
-    def pizza_name(self):
-        return "치즈 " + super().pizza_name()
-
-class BulgogiPizza(Pizza):
-    def pizza_name(self):
-        return "불고기 " + super().pizza_name()
-
-
 from abc import ABC, abstractmethod
 
-class PizzaService(ABC):
+class Pizza(ABC):
     @abstractmethod
     def pizza_name(self):
         pass
 
-class DefaultPizza(PizzaService):
+class DefaultPizza(Pizza):
     def pizza_name(self):
         return "피자"
 
+class PizzaDecorator(Pizza, ABC):
+    def __init__(self, pizza):
+        self.pizza = pizza
 
-class PizzaDecorator(PizzaService, ABC):
-    def __init__(self, pizza_service):
-        self.pizza_service = pizza_service
-
-    @abstractmethod
-    def pizza_name(self):
-        pass
-
-class PizzaService(ABC):
     @abstractmethod
     def pizza_name(self):
         pass
 
 class CheeseDecorator(PizzaDecorator):
-    def __init__(self, pizza_service):
-        super().__init__(pizza_service)
-
     def pizza_name(self):
-        return "치즈 " + super().pizza_name()
-
-class BulgogiDecorator(PizzaDecorator):
-    def __init__(self, pizza_service):
-        super().__init__(pizza_service)
-
-    def pizza_name(self):
-        return "불고기 " + super().pizza_name()
-
-class PizzaService:
-    def pizza_name(self):
-        pass
-
-class DefaultPizza(PizzaService):
-    def pizza_name(self):
-        return "피자"
-
-class PizzaDecorator(PizzaService):
-    def __init__(self, pizza_service):
-        self.pizza_service = pizza_service
-
-    def pizza_name(self):
-        return self.pizza_service.pizza_name()
+        return "치즈 " + self.pizza.pizza_name()
 
 class BulgogiDecorator(PizzaDecorator):
     def pizza_name(self):
-        return "불고기 " + super().pizza_name()
-
-class CheeseDecorator(PizzaDecorator):
-    def pizza_name(self):
-        return "치즈 " + super().pizza_name()
+        return "불고기 " + self.pizza.pizza_name()
 
 def main():
     enabled_bulgogi = True
