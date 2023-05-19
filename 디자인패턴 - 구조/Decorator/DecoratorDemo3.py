@@ -32,31 +32,3 @@ class Client:
 if __name__ == "__main__":
     client = Client()
     client.main()
-
-""" 
-추가 요구사항 
-많은 알람 채널을 지원해야될 필요
-새로운 메세징 시스템이 지속적으로 추가되고 있어 이에 대비할 필요
-"""
-
-from abc import ABC, abstractmethod
-
-class NotifierInterface(ABC):
-    @abstractmethod
-    def send(self, message):
-        pass
-
-from typing import Type
-
-class NotifierInterface(ABC):
-    @abstractmethod
-    def send(self, message: str):
-        pass
-
-class NotifierBaseDecorator(NotifierInterface):
-    def __init__(self, notifier: Type[Notifier]):
-        self.notifier = notifier
-
-    @abstractmethod
-    def send(self, message: str):
-        pass
