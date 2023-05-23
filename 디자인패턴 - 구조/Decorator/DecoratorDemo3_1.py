@@ -99,3 +99,22 @@ class Notifier(NotifierInterface):
 
         for notifier in self.notifiers:
             notifier.send(message)
+
+
+def main():
+    notifier = Notifier()
+
+    notifier.add_email("n00nietzsche@gmail.com")
+    notifier.add_email("billgates@microsoft.com")
+
+    # 사용자 친화적인 방법
+    notifier.facebook_enabled(True)
+
+    # 공통화를 쉽게 할 수 있는 방법
+    notifier.decorate(EmailNotifierDecorator)
+    notifier.decorate(SlackNotifierDecorator)
+
+    notifier.send("하이.")
+
+if __name__ == "__main__":
+    main()
