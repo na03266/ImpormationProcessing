@@ -5,40 +5,16 @@
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Type, Union
+from typing import List
 
 class NotifierInterface(ABC):
     @abstractmethod
     def send(self, message: str):
         pass
 
-class NotifierBaseDecorator(NotifierInterface):
-    def __init__(self, notifier: 'Notifier'):
-        self.notifier = notifier
-
-    @abstractmethod
-    def send(self, message: str):
-        pass
-
-class EmailNotifierDecorator(NotifierBaseDecorator):
-    def __init__(self, notifier: 'Notifier'):
-        super().__init__(notifier)
-
-    def send(self, message: str):
-        for email in self.notifier.get_emails():
-            print(f"[이메일 발신] \"{email}\" 로 내용: \"{message}\" 을 보냈습니다.")
-
-class SlackNotifierDecorator(NotifierBaseDecorator):
-    def __init__(self, notifier: 'Notifier'):
-        super().__init__(notifier)
-
-    def send(self, message: str):
-        for email in self.notifier.get_emails():
-            print(f"[슬랙 메세지 발신] \"{email}\" 로 내용: \"{message}\" 을 보냈습니다.")
-
 class Notifier(NotifierInterface):
     def __init__(self):
-        self.notifiers: List[Union[NotifierBaseDecorator, NotifierInterface]] = []
+        self.notifiers: List[NotifierInterface] = []
         self.emails: List[str] = []
 
     def get_emails(self) -> List[str]:
@@ -47,42 +23,13 @@ class Notifier(NotifierInterface):
     def add_notifier(self, notifier: NotifierInterface):
         self.notifiers.append(notifier)
 
-    def remove_notifier(self, notifier_class: Type[NotifierBaseDecorator]):
-        found_notifier = self.find_notifier(notifier_class)
+    def remove_notifier(self, notifier: NotifierInterface):
+        if notifier in self.notifiers:
+            self.notifiers.remove(notifier)
 
-        if found_notifier is not None:
-            self.notifiers.remove(found_notifier)
-
-    def find_notifier(self, notifier_class: Type[NotifierBaseDecorator]) -> Union[NotifierBaseDecorator, None]:
-        for notifier in self.notifiers:
-            if isinstance(notifier, notifier_class):
-                return notifier
-
-        return None
-
-    def contain_notifier(self, notifier_class: Type[NotifierBaseDecorator]) -> bool:
-        return any(isinstance(notifier, notifier_class) for notifier in self.notifiers)
-
-    def decorate(self, decorator: Type[NotifierBaseDecorator]):
-        if self.contain_notifier(decorator):
-            print("이미 추가된 발신 타입입니다.")
-            return
-
-        try:
-            constructor = decorator.__init__
-            self.add_notifier(decorator(self))
-        except Exception as e:
-            print("예외 발생:", e)
-
-    def facebook_enabled(self, bool_value: bool):
-        if bool_value:
-            if self.contain_notifier(FacebookNotifierDecorator):
-                print("이미 활성화된 상태입니다.")
-                return
-
-            self.add_notifier(FacebookNotifierDecorator(self))
-        else:
-            self.remove_notifier(FacebookNotifierDecorator)
+    def decorate(self, notifier: NotifierInterface):
+        if notifier not in self.notifiers:
+            self.notifiers.append(notifier)
 
     def add_email(self, email: str):
         self.emails.append(email)
@@ -100,6 +47,23 @@ class Notifier(NotifierInterface):
         for notifier in self.notifiers:
             notifier.send(message)
 
+class NotifierBaseDecorator(NotifierInterface):
+    def __init__(self, notifier: NotifierInterface):
+        self.notifier = notifier
+
+    @abstractmethod
+    def send(self, message: str):
+        pass
+
+class EmailNotifierDecorator(NotifierBaseDecorator):
+    def send(self, message: str):
+        for email in self.notifier.get_emails():
+            print(f"[이메일 발신] \"{email}\" 로 내용: \"{message}\" 을 보냈습니다.")
+
+class SlackNotifierDecorator(NotifierBaseDecorator):
+    def send(self, message: str):
+        for email in self.notifier.get_emails():
+            print(f"[슬랙 메세지 발신] \"{email}\" 로 내용: \"{message}\" 을 보냈습니다.")
 
 def main():
     notifier = Notifier()
@@ -108,13 +72,11 @@ def main():
     notifier.add_email("billgates@microsoft.com")
 
     # 사용자 친화적인 방법
-    notifier.facebook_enabled(True)
-
-    # 공통화를 쉽게 할 수 있는 방법
-    notifier.decorate(EmailNotifierDecorator)
-    notifier.decorate(SlackNotifierDecorator)
+    notifier.decorate(EmailNotifierDecorator(notifier))
+    notifier.decorate(SlackNotifierDecorator(notifier))
 
     notifier.send("하이.")
 
 if __name__ == "__main__":
     main()
+
