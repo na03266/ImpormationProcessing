@@ -50,3 +50,21 @@ if __name__ == "__main__":
 
     email_host.send_email(to_address, from_address, subject, message)
     email_host.close_session()
+
+from dataclasses import dataclass
+from email.mime.text import MIMEText
+
+@dataclass
+class EmailMessage:
+    to: str
+    from_: str
+    title: str
+    body: str
+    host: 'EmailHost'
+
+    def get_mime_message(self):
+        message = MIMEText(self.body)
+        message['From'] = self.from_
+        message['To'] = self.to
+        message['Subject'] = self.title
+        return message
