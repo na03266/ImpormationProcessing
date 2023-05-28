@@ -68,3 +68,36 @@ class EmailMessage:
         message['To'] = self.to
         message['Subject'] = self.title
         return message
+    
+    import smtplib
+from email.mime.text import MIMEText
+from typing import Union
+from email_host import EmailHost
+from email_message import EmailMessage
+
+class EmailSender:
+    @staticmethod
+    def send(email_message: EmailMessage):
+        mime_message = email_message.get_mime_message()
+
+        try:
+            with smtplib.SMTP(email_message.host.session['mail.smtp.host']) as server:
+                server.sendmail(email_message.from_, email_message.to, mime_message.as_string())
+        except smtplib.SMTPException as e:
+            print("메일 전송 중 오류가 발생했습니다:", e)
+
+# 예시 실행
+def main():
+    host = EmailHost("127.0.0.1")
+    email_message = EmailMessage(
+        to="n00nietzsche@gmail.com",
+        from_="admin@naver.com",
+        title="Test Mail from Python Program",
+        body="message",
+        host=host
+    )
+    EmailSender.send(email_message)
+
+if __name__ == "__main__":
+    main()
+
