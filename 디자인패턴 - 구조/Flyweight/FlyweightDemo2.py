@@ -24,3 +24,26 @@ square = Square()
 
 circle.draw()  # 출력 결과: 원 그리기
 square.draw()  # 출력 결과: 사각형 그리기
+
+
+class Circle:
+    def __init__(self, color):
+        self.color = color
+        self.x = 0
+        self.y = 0
+        self.radius = 0
+
+    def set_color(self, color):
+        self.color = color
+
+    def set_x(self, x):
+        self.x = x
+
+    def set_y(self, y):
+        self.y = y
+
+    def set_radius(self, radius):
+        self.radius = radius
+
+    def draw(self):
+        print(f"Circle [color={self.color}, x={self.x}, y={self.y}, radius={self.radius}]")
