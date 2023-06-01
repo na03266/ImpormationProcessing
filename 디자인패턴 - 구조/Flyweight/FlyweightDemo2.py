@@ -61,3 +61,21 @@ class ShapeFactory:
             print(f"==== 새로운 객체 생성 : {color}색 원 ====")
 
         return circle
+    
+import random
+
+class Main:
+    @staticmethod
+    def main():
+        colors = ["Red", "Green", "Blue", "Yellow"]
+
+        for i in range(10):
+            color = random.choice(colors)
+            circle = ShapeFactory.get_circle(color)
+            circle.set_x(random.randint(0, 100))
+            circle.set_y(random.randint(0, 4))
+            circle.set_radius(random.randint(0, 10))
+            circle.draw()
+
+Main.main()
+
