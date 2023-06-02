@@ -1,32 +1,14 @@
 from abc import ABC, abstractmethod
+import random
 
+# 추상 베이스 클래스 (Abstract Base Class)
 class Shape(ABC):
     @abstractmethod
     def draw(self):
         pass
 
-# Shape 인터페이스를 상속받아 구체적인 클래스를 정의합니다.
+# 구체적인 클래스 정의
 class Circle(Shape):
-    def draw(self):
-        print("원 그리기")
-
-class Square(Shape):
-    def draw(self):
-        print("사각형 그리기")
-
-# Shape 인터페이스의 메서드를 구현하지 않은 클래스를 정의하면 에러가 발생합니다.
-# class Triangle(Shape):
-#     pass
-
-# 다음과 같이 사용할 수 있습니다.
-circle = Circle()
-square = Square()
-
-circle.draw()  # 출력 결과: 원 그리기
-square.draw()  # 출력 결과: 사각형 그리기
-
-
-class Circle:
     def __init__(self, color):
         self.color = color
         self.x = 0
@@ -48,6 +30,7 @@ class Circle:
     def draw(self):
         print(f"Circle [color={self.color}, x={self.x}, y={self.y}, radius={self.radius}]")
 
+# ShapeFactory 클래스
 class ShapeFactory:
     _circle_map = {}
 
@@ -61,21 +44,17 @@ class ShapeFactory:
             print(f"==== 새로운 객체 생성 : {color}색 원 ====")
 
         return circle
-    
-import random
 
-class Main:
-    @staticmethod
-    def main():
-        colors = ["Red", "Green", "Blue", "Yellow"]
+def main():
+    colors = ["Red", "Green", "Blue", "Yellow"]
 
-        for i in range(10):
-            color = random.choice(colors)
-            circle = ShapeFactory.get_circle(color)
-            circle.set_x(random.randint(0, 100))
-            circle.set_y(random.randint(0, 4))
-            circle.set_radius(random.randint(0, 10))
-            circle.draw()
+    for _ in range(10):
+        color = random.choice(colors)
+        circle = ShapeFactory.get_circle(color)
+        circle.set_x(random.randint(0, 100))
+        circle.set_y(random.randint(0, 4))
+        circle.set_radius(random.randint(0, 10))
+        circle.draw()
 
-Main.main()
-
+if __name__ == "__main__":
+    main()
