@@ -1,3 +1,4 @@
+""" 연산자를 가능한 대로 공유시켜 메모리 낭비를 줄이는 방식 """
 from abc import ABC, abstractmethod
 import random
 
