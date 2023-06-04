@@ -8,8 +8,8 @@ RealSubject(실제의 주체)의 역할
     Proxy에서 요청이 들어왔을때 요청에 대한 응답을 합니다.
 
 """
-from time import sleep
 from abc import ABC, abstractmethod
+from time import sleep
 
 class PrintableSubject(ABC):
     @abstractmethod
@@ -42,3 +42,24 @@ class PrinterRealSubject(PrintableSubject):
 
     def print(self, string: str):
         print(string)
+
+class PrinterProxy(PrintableSubject):
+    def __init__(self, name: str):
+        self.name = name
+        self.real = None
+
+    def set_printer_name(self, name: str):
+        if self.real is not None:
+            self.real.set_printer_name(name)
+        self.name = name
+
+    def get_printer_name(self) -> str:
+        return self.name
+
+    def print(self, string: str):
+        self.realize()
+        self.real.print(string)
+
+    def realize(self):
+        if self.real is None:
+            self.real = PrinterRealSubject(self.name)
