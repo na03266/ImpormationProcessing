@@ -63,3 +63,15 @@ class PrinterProxy(PrintableSubject):
     def realize(self):
         if self.real is None:
             self.real = PrinterRealSubject(self.name)
+
+def main():
+    p = PrinterProxy("Simple")
+
+    # 프록시가 실행 됨
+    print(p.get_printer_name())
+
+    # realSubject가 실행 
+    p.print("프린트 요청")
+
+if __name__ == "__main__":
+    main()
