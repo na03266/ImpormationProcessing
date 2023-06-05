@@ -57,12 +57,12 @@ class PrinterProxy(PrintableSubject):
         return self.name
 
     def print(self, string: str):
-        self.realize()
-        self.real.print(string)
+        self.realize().print(string)
 
     def realize(self):
         if self.real is None:
             self.real = PrinterRealSubject(self.name)
+        return self.real
 
 def main():
     p = PrinterProxy("Simple")
