@@ -31,3 +31,18 @@ class SamsungElevator:
     def __init__(self):
         self.vendor = "삼성"
         # 삼성 특정 엘리베이터 초기화 코드 추가
+
+# Factory Method 패턴 구현
+class ElevatorFactoryFactory:
+    @staticmethod
+    def get_factory(vendor_id):
+        factory = None
+
+        if vendor_id == "LG":
+            factory = LGElevatorFactory()
+        elif vendor_id == "현대":
+            factory = HyundaiElevatorFactory()
+        elif vendor_id == "삼성":
+            factory = SamsungElevatorFactory()
+
+        return factory
