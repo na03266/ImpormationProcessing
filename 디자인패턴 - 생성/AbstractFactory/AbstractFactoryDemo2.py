@@ -46,3 +46,12 @@ class ElevatorFactoryFactory:
             factory = SamsungElevatorFactory()
 
         return factory
+
+vendor_id = "LG"  # 원하는 업체 ID로 변경하세요
+factory = ElevatorFactoryFactory.get_factory(vendor_id)
+
+if factory:
+    elevator = factory.create_elevator()
+    print(f"{elevator.vendor} 엘리베이터를 생성했습니다.")
+else:
+    print("유효하지 않은 업체 ID입니다.")
