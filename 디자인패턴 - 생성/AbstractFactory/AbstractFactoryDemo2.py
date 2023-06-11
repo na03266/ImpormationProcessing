@@ -135,3 +135,36 @@ if factory:
     print(f"{elevator.vendor} 엘리베이터를 생성했습니다.")
 else:
     print("유효하지 않은 업체 ID입니다.")
+
+class Client:
+    @staticmethod
+    def main(vendor_name):
+        vendor_id = None
+
+        # 업체 이름에 따라 VendorID를 설정합니다.
+        if vendor_name.lower() == "lg":
+            vendor_id = "LG"
+        elif vendor_name.lower() == "samsung":
+            vendor_id = "삼성"
+        elif vendor_name.lower() == "hyundai":
+            vendor_id = "현대"
+        else:
+            print("유효하지 않은 업체 이름입니다.")
+            return
+
+        factory = ElevatorFactoryFactory.get_factory(vendor_id)
+
+        # 생성된 팩토리를 사용하여 부품 생성 및 사용
+        if factory:
+            motor = factory.create_motor()
+            door = factory.create_door()
+
+            # 생성된 부품들을 사용하여 엘리베이터를 조립하거나 동작시키는 등의 작업 수행
+            print(f"{vendor_name} 엘리베이터 부품이 생성되었습니다.")
+        else:
+            print("유효하지 않은 업체 이름입니다.")
+
+
+if __name__ == "__main__":
+    vendor_name = "LG"  # 테스트할 업체 이름을 변경해주세요.
+    Client.main(vendor_name)
