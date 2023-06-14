@@ -16,3 +16,21 @@ class Computer:
 
     def is_bluetooth_enabled(self):
         return self.is_bluetooth_enabled
+
+    class ComputerBuilder:
+        def __init__(self, hdd, ram):
+            self.hdd = hdd
+            self.ram = ram
+            self.is_graphics_card_enabled = False
+            self.is_bluetooth_enabled = False
+
+        def set_graphics_card_enabled(self, is_graphics_card_enabled):
+            self.is_graphics_card_enabled = is_graphics_card_enabled
+            return self
+
+        def set_bluetooth_enabled(self, is_bluetooth_enabled):
+            self.is_bluetooth_enabled = is_bluetooth_enabled
+            return self
+
+        def build(self):
+            return Computer(self.hdd, self.ram, self.is_graphics_card_enabled, self.is_bluetooth_enabled)
