@@ -34,3 +34,9 @@ class Computer:
 
         def build(self):
             return Computer(self.hdd, self.ram, self.is_graphics_card_enabled, self.is_bluetooth_enabled)
+
+if __name__ == "__main__":
+    comp = Computer.ComputerBuilder("500 GB", "2 GB") \
+        .set_bluetooth_enabled(True) \
+        .set_graphics_card_enabled(True) \
+        .build()
