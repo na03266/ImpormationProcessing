@@ -1,16 +1,19 @@
-# Abstract Factory 인터페이스
+# AbstractFactory 인터페이스
 class AbstractFactory:
     def create_operation(self):
+        """IProduct를 생성하는 메서드를 정의하는 인터페이스입니다."""
         pass
 
 # ConcreteFactoryA 클래스
 class ConcreteFactoryA(AbstractFactory):
     def create_operation(self):
+        """IProduct의 구체적인 구현인 ConcreteProductA를 생성합니다."""
         return ConcreteProductA()
 
 # ConcreteFactoryB 클래스
 class ConcreteFactoryB(AbstractFactory):
     def create_operation(self):
+        """IProduct의 구체적인 구현인 ConcreteProductB를 생성합니다."""
         return ConcreteProductB()
 
 # IProduct 인터페이스
