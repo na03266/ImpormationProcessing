@@ -20,3 +20,24 @@ def display_menu():
     print("3. 종료")
     choice = input("선택: ")
     return choice
+
+def main():
+    todo_list = ToDoList()
+
+    while True:
+        choice = display_menu()
+
+        if choice == '1':
+            task = input("추가할 할 일을 입력하세요: ")
+            todo_list.add_task(task)
+            print("할 일이 추가되었습니다.")
+        elif choice == '2':
+            todo_list.show_tasks()
+        elif choice == '3':
+            print("프로그램을 종료합니다.")
+            break
+        else:
+            print("올바른 선택을 입력하세요.")
+
+if __name__ == "__main__":
+    main()
