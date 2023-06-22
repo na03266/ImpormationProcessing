@@ -12,12 +12,20 @@ class ToDoList:
             print("할 일 목록:")
             for idx, task in enumerate(self.tasks, start=1):
                 print(f"{idx}. {task}")
+                
+    def delete_task(self, task_idx):
+        if 1 <= task_idx <= len(self.tasks):
+            del self.tasks[task_idx - 1]
+            print("할 일이 삭제되었습니다.")
+        else:
+            print("올바른 할 일 번호를 입력하세요.")
 
 def display_menu():
     print("\n======= To-Do List =======")
     print("1. 할 일 추가")
     print("2. 할 일 목록 보기")
-    print("3. 종료")
+    print("3. 할 일 삭제")
+    print("4. 종료")
     choice = input("선택: ")
     return choice
 
@@ -34,6 +42,9 @@ def main():
         elif choice == '2':
             todo_list.show_tasks()
         elif choice == '3':
+            task_idx = int(input("삭제할 할 일 번호를 입력하세요: "))
+            todo_list.delete_task(task_idx)
+        elif choice == '4':
             print("프로그램을 종료합니다.")
             break
         else:
