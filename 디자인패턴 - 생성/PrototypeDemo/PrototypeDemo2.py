@@ -31,7 +31,8 @@ def display_menu():
     print("1. 할 일 추가")
     print("2. 할 일 목록 보기")
     print("3. 할 일 삭제")
-    print("4. 종료")
+    print("4. 할 일 완료 처리")
+    print("5. 종료")
     choice = input("선택: ")
     return choice
 
