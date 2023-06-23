@@ -52,6 +52,9 @@ def main():
             task_idx = int(input("삭제할 할 일 번호를 입력하세요: "))
             todo_list.delete_task(task_idx)
         elif choice == '4':
+            task_idx = int(input("완료 처리할 할 일 번호를 입력하세요: "))
+            todo_list.complete_task(task_idx)
+        elif choice == '5':
             print("프로그램을 종료합니다.")
             break
         else:
