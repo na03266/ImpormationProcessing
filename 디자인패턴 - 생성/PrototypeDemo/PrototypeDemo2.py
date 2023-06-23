@@ -19,6 +19,12 @@ class ToDoList:
             print("할 일이 삭제되었습니다.")
         else:
             print("올바른 할 일 번호를 입력하세요.")
+    def complete_task(self, task_idx):
+        if 1 <= task_idx <= len(self.tasks):
+            self.tasks[task_idx - 1]["completed"] = True
+            print("할 일이 완료 상태로 변경되었습니다.")
+        else:
+            print("올바른 할 일 번호를 입력하세요.")
 
 def display_menu():
     print("\n======= To-Do List =======")
