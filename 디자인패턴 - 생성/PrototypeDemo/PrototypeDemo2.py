@@ -26,6 +26,14 @@ class ToDoList:
         else:
             print("올바른 할 일 번호를 입력하세요.")
 
+    def modify_task(self, task_idx, new_task):
+        if 1 <= task_idx <= len(self.tasks):
+            self.tasks[task_idx - 1]["task"] = new_task
+            print("할 일이 수정되었습니다.")
+        else:
+            print("올바른 할 일 번호를 입력하세요.")
+
+
 def display_menu():
     print("\n======= To-Do List =======")
     print("1. 할 일 추가")
