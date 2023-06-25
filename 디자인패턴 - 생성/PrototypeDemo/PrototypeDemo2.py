@@ -64,6 +64,10 @@ def main():
             task_idx = int(input("완료 처리할 할 일 번호를 입력하세요: "))
             todo_list.complete_task(task_idx)
         elif choice == '5':
+            task_idx = int(input("수정할 할 일 번호를 입력하세요: "))
+            new_task = input("새로운 할 일 내용을 입력하세요: ")
+            todo_list.modify_task(task_idx, new_task)
+        elif choice == '6':
             print("프로그램을 종료합니다.")
             break
         else:
