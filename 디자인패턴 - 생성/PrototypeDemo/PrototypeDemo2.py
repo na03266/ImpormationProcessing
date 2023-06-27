@@ -1,3 +1,6 @@
+import os
+from datetime import datetime
+
 class ToDoList:
     def __init__(self):
         self.tasks = []
@@ -36,13 +39,26 @@ class ToDoList:
             print("올바른 할 일 번호를 입력하세요.")
 
     def save_to_file(self):
-        with open("completed_tasks.txt", "w") as completed_file:
-            with open("incomplete_tasks.txt", "w") as incomplete_file:
+        today_date = datetime.now().strftime("%Y-%m-%d")
+        completed_filename = f"completed_tasks_{today_date}.txt"
+        incomplete_filename = f"incomplete_tasks_{today_date}.txt"
+
+        with open(completed_filename, "w") as completed_file:
+            with open(incomplete_filename, "w") as incomplete_file:
                 for task_info in self.tasks:
                     if task_info["completed"]:
                         completed_file.write(task_info["task"] + "\n")
                     else:
                         incomplete_file.write(task_info["task"] + "\n")
+
+    def load_from_file(self, filename):
+        if not os.path.isfile(filename):
+            return
+
+        with open(filename, "r") as file:
+            for line in file:
+                task = line.strip()
+                self.add_task(task)
 
 def display_menu():
     print("\n======= To-Do List =======")
@@ -52,7 +68,8 @@ def display_menu():
     print("4. 할 일 완료 처리")
     print("5. 할 일 수정")
     print("6. 오늘 완료한 일들 저장")
-    print("7. 종료")
+    print("7. 오늘 할 일 불러오기")
+    print("8. 종료")
     choice = input("선택: ")
     return choice
 
@@ -82,6 +99,14 @@ def main():
             todo_list.save_to_file()
             print("오늘 완료한 일들이 저장되었습니다.")
         elif choice == '7':
+            today_date = datetime.now().strftime("%Y-%m-%d")
+            completed_filename = f"completed_tasks_{today_date}.txt"
+            incomplete_filename = f"incomplete_tasks_{today_date}.txt"
+            todo_list = ToDoList()
+            todo_list.load_from_file(completed_filename)
+            todo_list.load_from_file(incomplete_filename)
+            print("오늘 할 일을 불러왔습니다.")
+        elif choice == '8':
             print("프로그램을 종료합니다.")
             break
         else:
