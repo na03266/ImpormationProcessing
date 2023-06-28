@@ -38,6 +38,7 @@ class ToDoList:
         else:
             print("올바른 할 일 번호를 입력하세요.")
 
+
     def save_to_file(self):
         today_date = datetime.now().strftime("%Y-%m-%d")
         completed_filename = f"completed_tasks_{today_date}.txt"
@@ -59,6 +60,17 @@ class ToDoList:
             for line in file:
                 task = line.strip()
                 self.add_task(task)
+
+    def load_today_tasks(self):
+        today_date = datetime.now().strftime("%Y-%m-%d")
+        completed_filename = f"completed_tasks_{today_date}.txt"
+        incomplete_filename = f"incomplete_tasks_{today_date}.txt"
+
+        if os.path.isfile(completed_filename):
+            self.load_from_file(completed_filename)
+
+        if os.path.isfile(incomplete_filename):
+            self.load_from_file(incomplete_filename)
 
 def display_menu():
     print("\n======= To-Do List =======")
