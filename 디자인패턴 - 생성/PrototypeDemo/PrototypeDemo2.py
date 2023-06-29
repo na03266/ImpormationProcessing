@@ -126,3 +126,125 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QListWidget, QLineEdit, QPushButton, QLabel
+from datetime import datetime
+
+class ToDoListApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+
+    def initUI(self):
+        self.setWindowTitle('To-Do List')
+        self.setGeometry(100, 100, 400, 300)
+
+        self.central_widget = QWidget(self)
+        self.setCentralWidget(self.central_widget)
+
+        self.layout = QVBoxLayout()
+
+        self.tasks_list_widget = QListWidget()
+        self.layout.addWidget(self.tasks_list_widget)
+
+        self.add_task_input = QLineEdit()
+        self.layout.addWidget(self.add_task_input)
+
+        self.add_task_button = QPushButton('Add Task', self)
+        self.add_task_button.clicked.connect(self.add_task)
+        self.layout.addWidget(self.add_task_button)
+
+        self.delete_task_button = QPushButton('Delete Task', self)
+        self.delete_task_button.clicked.connect(self.delete_task)
+        self.layout.addWidget(self.delete_task_button)
+
+        self.complete_task_button = QPushButton('Complete Task', self)
+        self.complete_task_button.clicked.connect(self.complete_task)
+        self.layout.addWidget(self.complete_task_button)
+
+        self.save_button = QPushButton('Save Today\'s Tasks', self)
+        self.save_button.clicked.connect(self.save_to_file)
+        self.layout.addWidget(self.save_button)
+
+        self.load_button = QPushButton('Load Today\'s Tasks', self)
+        self.load_button.clicked.connect(self.load_from_file)
+        self.layout.addWidget(self.load_button)
+
+        self.today_date_label = QLabel(self)
+        self.layout.addWidget(self.today_date_label)
+
+        self.central_widget.setLayout(self.layout)
+
+        self.todo_list = []
+
+        self.update_today_date_label()
+
+    def update_today_date_label(self):
+        today_date = datetime.now().strftime("%Y-%m-%d")
+        self.today_date_label.setText(f"Today's Date: {today_date}")
+
+    def add_task(self):
+        task = self.add_task_input.text()
+        self.todo_list.append({"task": task, "completed": False})
+        self.add_task_input.clear()
+        self.update_tasks_list()
+
+    def delete_task(self):
+        selected_index = self.tasks_list_widget.currentRow()
+        if selected_index != -1:
+            del self.todo_list[selected_index]
+            self.update_tasks_list()
+
+    def complete_task(self):
+        selected_index = self.tasks_list_widget.currentRow()
+        if selected_index != -1:
+            self.todo_list[selected_index]["completed"] = True
+            self.update_tasks_list()
+
+    def update_tasks_list(self):
+        self.tasks_list_widget.clear()
+        for task_info in self.todo_list:
+            task_status = "Completed" if task_info["completed"] else "Incomplete"
+            self.tasks_list_widget.addItem(f"{task_info['task']} ({task_status})")
+
+    def save_to_file(self):
+        today_date = datetime.now().strftime("%Y-%m-%d")
+        completed_filename = f"completed_tasks_{today_date}.txt"
+        incomplete_filename = f"incomplete_tasks_{today_date}.txt"
+
+        with open(completed_filename, "w") as completed_file:
+            with open(incomplete_filename, "w") as incomplete_file:
+                for task_info in self.todo_list:
+                    if task_info["completed"]:
+                        completed_file.write(task_info["task"] + "\n")
+                    else:
+                        incomplete_file.write(task_info["task"] + "\n")
+
+    def load_from_file(self):
+        today_date = datetime.now().strftime("%Y-%m-%d")
+        completed_filename = f"completed_tasks_{today_date}.txt"
+        incomplete_filename = f"incomplete_tasks_{today_date}.txt"
+
+        if not os.path.isfile(completed_filename) and not os.path.isfile(incomplete_filename):
+            return
+
+        self.todo_list = []
+
+        with open(completed_filename, "r") as completed_file:
+            for line in completed_file:
+                task = line.strip()
+                self.todo_list.append({"task": task, "completed": True})
+
+        with open(incomplete_filename, "r") as incomplete_file:
+            for line in incomplete_file:
+                task = line.strip()
+                self.todo_list.append({"task": task, "completed": False})
+
+        self.update_tasks_list()
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = ToDoListApp()
+    window.show()
+    sys.exit(app.exec_())
