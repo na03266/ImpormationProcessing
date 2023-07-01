@@ -1,8 +1,7 @@
 import os
 from datetime import datetime
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QListWidget, QLineEdit, QPushButton, QLabel
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QListWidget, QLineEdit, QPushButton, QLabel, QMessageBox
 
 class ToDoList:
     def __init__(self):
@@ -51,7 +50,7 @@ class ToDoListApp(QMainWindow):
 
     def initUI(self):
         self.setWindowTitle('To-Do List')
-        self.setGeometry(100, 100, 400, 300)
+        self.setGeometry(100, 100, 400, 400)
 
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
@@ -62,27 +61,32 @@ class ToDoListApp(QMainWindow):
         self.layout.addWidget(self.tasks_list_widget)
 
         self.add_task_input = QLineEdit()
+        self.add_task_input.setPlaceholderText("Enter a new task")
         self.layout.addWidget(self.add_task_input)
 
-        self.add_task_button = QPushButton('Add Task', self)
+        self.buttons_layout = QHBoxLayout()
+
+        self.add_task_button = QPushButton('Add', self)
         self.add_task_button.clicked.connect(self.add_task)
-        self.layout.addWidget(self.add_task_button)
+        self.buttons_layout.addWidget(self.add_task_button)
 
-        self.delete_task_button = QPushButton('Delete Task', self)
+        self.delete_task_button = QPushButton('Delete', self)
         self.delete_task_button.clicked.connect(self.delete_task)
-        self.layout.addWidget(self.delete_task_button)
+        self.buttons_layout.addWidget(self.delete_task_button)
 
-        self.complete_task_button = QPushButton('Complete Task', self)
+        self.complete_task_button = QPushButton('Complete', self)
         self.complete_task_button.clicked.connect(self.complete_task)
-        self.layout.addWidget(self.complete_task_button)
+        self.buttons_layout.addWidget(self.complete_task_button)
 
-        self.save_button = QPushButton('Save Today\'s Tasks', self)
+        self.save_button = QPushButton('Save', self)
         self.save_button.clicked.connect(self.save_to_file)
-        self.layout.addWidget(self.save_button)
+        self.buttons_layout.addWidget(self.save_button)
 
-        self.load_button = QPushButton('Load Today\'s Tasks', self)
+        self.load_button = QPushButton('Load', self)
         self.load_button.clicked.connect(self.load_from_file)
-        self.layout.addWidget(self.load_button)
+        self.buttons_layout.addWidget(self.load_button)
+
+        self.layout.addLayout(self.buttons_layout)
 
         self.today_date_label = QLabel(self)
         self.layout.addWidget(self.today_date_label)
@@ -100,7 +104,7 @@ class ToDoListApp(QMainWindow):
         self.today_date_label.setText(f"Today's Date: {today_date}")
 
     def add_task(self):
-        task = self.add_task_input.text()
+        task = self.add_task_input.text().strip()
         if task:
             self.todo_list.add_task(task)
             self.add_task_input.clear()
@@ -131,6 +135,7 @@ class ToDoListApp(QMainWindow):
         today_date = datetime.now().strftime("%Y-%m-%d")
         filename = f"tasks_{today_date}.txt"
         self.todo_list.save_to_file(filename)
+        QMessageBox.information(self, "Information", "Tasks have been saved successfully.", QMessageBox.Ok)
 
     def load_from_file(self):
         today_date = datetime.now().strftime("%Y-%m-%d")
