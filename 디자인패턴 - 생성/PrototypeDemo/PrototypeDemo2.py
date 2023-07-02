@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QListWidget, QLineEdit, QPushButton, QLabel, QMessageBox
+from PyQt5.QtGui import QFont
 
 class ToDoList:
     def __init__(self):
@@ -58,37 +59,45 @@ class ToDoListApp(QMainWindow):
         self.layout = QVBoxLayout()
 
         self.tasks_list_widget = QListWidget()
+        self.tasks_list_widget.setFont(QFont("Arial", 14))
         self.layout.addWidget(self.tasks_list_widget)
 
         self.add_task_input = QLineEdit()
+        self.add_task_input.setFont(QFont("Arial", 14))
         self.add_task_input.setPlaceholderText("Enter a new task")
         self.layout.addWidget(self.add_task_input)
 
         self.buttons_layout = QHBoxLayout()
 
         self.add_task_button = QPushButton('Add', self)
+        self.add_task_button.setFont(QFont("Arial", 14, QFont.Bold))
         self.add_task_button.clicked.connect(self.add_task)
         self.buttons_layout.addWidget(self.add_task_button)
 
         self.delete_task_button = QPushButton('Delete', self)
+        self.delete_task_button.setFont(QFont("Arial", 14, QFont.Bold))
         self.delete_task_button.clicked.connect(self.delete_task)
         self.buttons_layout.addWidget(self.delete_task_button)
 
         self.complete_task_button = QPushButton('Complete', self)
+        self.complete_task_button.setFont(QFont("Arial", 14, QFont.Bold))
         self.complete_task_button.clicked.connect(self.complete_task)
         self.buttons_layout.addWidget(self.complete_task_button)
 
         self.save_button = QPushButton('Save', self)
+        self.save_button.setFont(QFont("Arial", 14, QFont.Bold))
         self.save_button.clicked.connect(self.save_to_file)
         self.buttons_layout.addWidget(self.save_button)
 
         self.load_button = QPushButton('Load', self)
+        self.load_button.setFont(QFont("Arial", 14, QFont.Bold))
         self.load_button.clicked.connect(self.load_from_file)
         self.buttons_layout.addWidget(self.load_button)
 
         self.layout.addLayout(self.buttons_layout)
 
         self.today_date_label = QLabel(self)
+        self.today_date_label.setFont(QFont("Arial", 14, QFont.Bold))
         self.layout.addWidget(self.today_date_label)
 
         self.central_widget.setLayout(self.layout)
