@@ -2,7 +2,8 @@ import os
 from datetime import datetime
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QListWidget, QLineEdit, QPushButton, QLabel, QMessageBox
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QFont, QFontMetrics, QPainter, QPen
+from PyQt5.QtCore import Qt
 
 class ToDoList:
     def __init__(self):
@@ -44,6 +45,27 @@ class ToDoList:
                     completed = True if task_data[1] == "completed" else False
                     self.tasks.append({"task": task, "completed": completed})
 
+class CompletedTaskListWidget(QListWidget):
+    def __init__(self):
+        super().__init__()
+
+    def paintEvent(self, event):
+        super().paintEvent(event)
+        painter = QPainter(self.viewport())
+        painter.setPen(QPen(Qt.black, 2, Qt.SolidLine))
+
+        for row in range(self.count()):
+            item = self.item(row)
+            if item and item.data(Qt.UserRole):
+                rect = self.visualRect(item.index())
+                text = item.text()
+                metrics = QFontMetrics(self.font())
+                width = metrics.width(text)
+                height = metrics.height()
+                line_x = rect.x() + width
+                line_y = rect.y() + height // 2
+                painter.drawLine(rect.x(), line_y, line_x, line_y)
+
 class ToDoListApp(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -58,7 +80,7 @@ class ToDoListApp(QMainWindow):
 
         self.layout = QVBoxLayout()
 
-        self.tasks_list_widget = QListWidget()
+        self.tasks_list_widget = CompletedTaskListWidget()
         self.tasks_list_widget.setFont(QFont("Arial", 14))
         self.layout.addWidget(self.tasks_list_widget)
 
@@ -137,8 +159,12 @@ class ToDoListApp(QMainWindow):
         self.tasks_list_widget.clear()
         tasks = self.todo_list.show_tasks()
         for task_info in tasks:
-            task_status = "Completed" if task_info["completed"] else "Incomplete"
-            self.tasks_list_widget.addItem(f"{task_info['task']} ({task_status})")
+            task_text = f"{task_info['task']}"
+            if task_info["completed"]:
+                task_text = f"<s>{task_text}</s>"
+            self.tasks_list_widget.addItem(task_text)
+            item = self.tasks_list_widget.item(self.tasks_list_widget.count() - 1)
+            item.setData(Qt.UserRole, task_info["completed"])
 
     def save_to_file(self):
         today_date = datetime.now().strftime("%Y-%m-%d")
