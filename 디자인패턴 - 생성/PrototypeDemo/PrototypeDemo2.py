@@ -66,6 +66,19 @@ class CompletedTaskListWidget(QListWidget):
                 line_y = rect.y() + height // 2
                 painter.drawLine(rect.x(), line_y, line_x, line_y)
 
+    def editorEvent(self, event, option, index):
+        if event.type() == QEvent.MouseButtonRelease and event.button() == Qt.LeftButton:
+            rect = self.visualRect(index)
+            checkbox_rect = option.rect.adjusted(5, 0, 0, 0)
+            if checkbox_rect.contains(event.pos()):
+                item = self.itemFromIndex(index)
+                task_idx = self.row(item)
+                self.itemClicked.emit(item)
+                self.parent().complete_task(task_idx)
+                return True
+
+        return super().editorEvent(event, option, index)
+
 class ToDoListApp(QMainWindow):
     def __init__(self):
         super().__init__()
