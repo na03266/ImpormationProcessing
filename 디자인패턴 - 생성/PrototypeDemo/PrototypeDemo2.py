@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QListWidget, QLineEdit, QPushButton, QLabel, QMessageBox
-from PyQt5.QtGui import QFont, QFontMetrics, QPainter, QPen
+from PyQt5.QtGui import QFont, QFontMetrics, QPainter, QPen, QTextOption
 from PyQt5.QtCore import Qt
 
 class ToDoList:
@@ -57,7 +57,7 @@ class CompletedTaskListWidget(QListWidget):
         for row in range(self.count()):
             item = self.item(row)
             if item and item.data(Qt.UserRole):
-                rect = self.visualRect(item.index())
+                rect = self.visualRect(self.indexFromItem(item))
                 text = item.text()
                 metrics = QFontMetrics(self.font())
                 width = metrics.width(text)
