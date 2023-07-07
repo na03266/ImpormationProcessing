@@ -174,8 +174,6 @@ class ToDoListApp(QMainWindow):
         for task_info in tasks:
             task_text = f"{task_info['task']}"
             if task_info["completed"]:
-                task_text = task_text  # 완료된 작업은 추가적인 태그 없이 그대로 출력
-            else:
                 task_text = f"<s>{task_text}</s>"
             self.tasks_list_widget.addItem(task_text)
             item = self.tasks_list_widget.item(self.tasks_list_widget.count() - 1)
