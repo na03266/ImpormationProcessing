@@ -43,15 +43,33 @@ while True:
     NUM_MINES = 10
 
 # 지뢰 랜덤 배치
-    def place_mines():
-        mines = random.sample(range(ROWS * COLS), NUM_MINES)
-        grid = [[0 for _ in range(COLS)] for _ in range(ROWS)]
+def place_mines():
+    mines = random.sample(range(ROWS * COLS), NUM_MINES)
+    grid = [[0 for _ in range(COLS)] for _ in range(ROWS)]
 
-        for mine in mines:
-            row, col = divmod(mine, COLS)
-            grid[row][col] = 1
+    for mine in mines:
+        row, col = divmod(mine, COLS)
+        grid[row][col] = 1
 
-        return grid
+    return grid
 
-    grid = place_mines()
-    print(grid)  # 지뢰가 있는 위치는 1로 표시됩니다.
+grid = place_mines()
+print(grid)  # 지뢰가 있는 위치는 1로 표시됩니다.
+
+
+# 게임 루프
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:  # 마우스 왼쪽 버튼 클릭
+                x, y = event.pos
+                col, row = x // CELL_SIZE, y // CELL_SIZE
+                print("Cell clicked:", row, col)  # 클릭한 셀의 좌표를 출력
+
+    screen.fill(BLACK)
+    draw_grid()
+
+    pygame.display.update()
