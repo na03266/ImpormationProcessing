@@ -13,34 +13,24 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("지뢰찾기")
 
 # 그리드 설정
-ROWS, COLS = 10, 10 # 10행 10열
-CELL_SIZE = 50 #50px
+ROWS, COLS = 10, 10  # 10행 10열
+CELL_SIZE = 50  # 50px
 
 # 색상 정의
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+GRAY = (150, 150, 150)
+RED = (255, 0, 0)
 
 # 그리드 그리기
 def draw_grid():
     for row in range(ROWS):
         for col in range(COLS):
-            pygame.draw.rect(screen, WHITE, (col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
-
-# 게임 루프
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-
-    screen.fill(BLACK)
-    draw_grid()
-
-    pygame.display.update()
-
+            cell_rect = pygame.Rect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE)
+            pygame.draw.rect(screen, WHITE, cell_rect, 1)
 
 # 지뢰 개수 설정
-    NUM_MINES = 10
+NUM_MINES = 10
 
 # 지뢰 랜덤 배치
 def place_mines():
@@ -56,7 +46,6 @@ def place_mines():
 grid = place_mines()
 print(grid)  # 지뢰가 있는 위치는 1로 표시됩니다.
 
-
 # 게임 루프
 while True:
     for event in pygame.event.get():
@@ -71,5 +60,12 @@ while True:
 
     screen.fill(BLACK)
     draw_grid()
+
+    # 그리드 내부의 지뢰를 표시합니다.
+    for row in range(ROWS):
+        for col in range(COLS):
+            if grid[row][col] == 1:
+                cell_rect = pygame.Rect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE)
+                pygame.draw.rect(screen, RED, cell_rect)
 
     pygame.display.update()
