@@ -44,7 +44,22 @@ def place_mines():
     return grid
 
 grid = place_mines()
-print(grid)  # 지뢰가 있는 위치는 1로 표시됩니다.
+
+# 게임 상태 변수
+revealed = [[False for _ in range(COLS)] for _ in range(ROWS)]
+
+# 그리드 내부의 셀 열기 (재귀적으로 주변 셀을 열도록 구현)
+def reveal_cells(row, col):
+    if row < 0 or row >= ROWS or col < 0 or col >= COLS or revealed[row][col]:
+        return
+
+    revealed[row][col] = True
+
+    if grid[row][col] == 0:  # 주변 셀 열기
+        for dr in [-1, 0, 1]:
+            for dc in [-1, 0, 1]:
+                if dr != 0 or dc != 0:
+                    reveal_cells(row + dr, col + dc)
 
 # 게임 루프
 while True:
@@ -56,16 +71,28 @@ while True:
             if event.button == 1:  # 마우스 왼쪽 버튼 클릭
                 x, y = event.pos
                 col, row = x // CELL_SIZE, y // CELL_SIZE
-                print("Cell clicked:", row, col)  # 클릭한 셀의 좌표를 출력
+                if grid[row][col] == 1:  # 클릭한 셀이 지뢰인 경우
+                    # 모든 지뢰를 표시하고 게임 종료
+                    for r in range(ROWS):
+                        for c in range(COLS):
+                            if grid[r][c] == 1:
+                                revealed[r][c] = True
+                else:
+                    reveal_cells(row, col)  # 클릭한 셀 주변의 빈 셀을 열기
 
     screen.fill(BLACK)
     draw_grid()
 
-    # 그리드 내부의 지뢰를 표시합니다.
+    # 그리드 내부의 셀 표시
     for row in range(ROWS):
         for col in range(COLS):
-            if grid[row][col] == 1:
-                cell_rect = pygame.Rect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE)
-                pygame.draw.rect(screen, RED, cell_rect)
+            cell_rect = pygame.Rect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE)
+            if revealed[row][col]:
+                if grid[row][col] == 1:  # 지뢰인 경우 빨간색으로 표시
+                    pygame.draw.rect(screen, RED, cell_rect)
+                else:  # 빈 셀인 경우 회색으로 표시
+                    pygame.draw.rect(screen, GRAY, cell_rect)
+            else:
+                pygame.draw.rect(screen, WHITE, cell_rect, 1)  # 미열린 셀은 흰색 테두리로 표시
 
     pygame.display.update()
