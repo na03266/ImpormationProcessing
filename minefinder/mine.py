@@ -39,7 +39,7 @@ def place_mines():
 
     for mine in mines:
         row, col = divmod(mine, COLS)
-        grid[row][col] = 1
+        grid[row][col] = 9  # 9는 지뢰를 의미
 
     return grid
 
@@ -47,10 +47,11 @@ grid = place_mines()
 
 # 게임 상태 변수
 revealed = [[False for _ in range(COLS)] for _ in range(ROWS)]
+flagged = [[False for _ in range(COLS)] for _ in range(ROWS)]
 
 # 그리드 내부의 셀 열기 (재귀적으로 주변 셀을 열도록 구현)
 def reveal_cells(row, col):
-    if row < 0 or row >= ROWS or col < 0 or col >= COLS or revealed[row][col]:
+    if row < 0 or row >= ROWS or col < 0 or col >= COLS or revealed[row][col] or flagged[row][col]:
         return
 
     revealed[row][col] = True
@@ -71,14 +72,27 @@ while True:
             if event.button == 1:  # 마우스 왼쪽 버튼 클릭
                 x, y = event.pos
                 col, row = x // CELL_SIZE, y // CELL_SIZE
-                if grid[row][col] == 1:  # 클릭한 셀이 지뢰인 경우
+
+                if flagged[row][col]:
+                    continue
+
+                if grid[row][col] == 9:  # 클릭한 셀이 지뢰인 경우
                     # 모든 지뢰를 표시하고 게임 종료
                     for r in range(ROWS):
                         for c in range(COLS):
-                            if grid[r][c] == 1:
+                            if grid[r][c] == 9:
                                 revealed[r][c] = True
                 else:
                     reveal_cells(row, col)  # 클릭한 셀 주변의 빈 셀을 열기
+
+            elif event.button == 3:  # 마우스 오른쪽 버튼 클릭
+                x, y = event.pos
+                col, row = x // CELL_SIZE, y // CELL_SIZE
+
+                if revealed[row][col]:
+                    continue
+
+                flagged[row][col] = not flagged[row][col]
 
     screen.fill(BLACK)
     draw_grid()
@@ -88,10 +102,23 @@ while True:
         for col in range(COLS):
             cell_rect = pygame.Rect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE)
             if revealed[row][col]:
-                if grid[row][col] == 1:  # 지뢰인 경우 빨간색으로 표시
+                if grid[row][col] == 9:  # 지뢰인 경우 빨간색으로 표시
                     pygame.draw.rect(screen, RED, cell_rect)
                 else:  # 빈 셀인 경우 회색으로 표시
                     pygame.draw.rect(screen, GRAY, cell_rect)
+                    if grid[row][col] > 0:  # 주변 지뢰 개수를 표시
+                        font = pygame.font.SysFont(None, 30)
+                        num_mines = grid[row][col]
+                        text_surface = font.render(str(num_mines), True, WHITE)
+                        text_rect = text_surface.get_rect(center=cell_rect.center)
+                        screen.blit(text_surface, text_rect)
+            elif flagged[row][col]:
+                pygame.draw.rect(screen, WHITE, cell_rect)
+                font = pygame.font.SysFont(None, 30)
+                flag_text = "F"
+                text_surface = font.render(flag_text, True, BLACK)
+                text_rect = text_surface.get_rect(center=cell_rect.center)
+                screen.blit(text_surface, text_rect)
             else:
                 pygame.draw.rect(screen, WHITE, cell_rect, 1)  # 미열린 셀은 흰색 테두리로 표시
 
