@@ -49,6 +49,21 @@ grid = place_mines()
 revealed = [[False for _ in range(COLS)] for _ in range(ROWS)]
 flagged = [[False for _ in range(COLS)] for _ in range(ROWS)]
 
+# 주변에 있는 지뢰의 개수를 계산하는 함수
+def count_surrounding_mines(row, col):
+    if grid[row][col] == 9:
+        return 9  # 현재 셀이 지뢰인 경우
+
+    count = 0
+    for dr in [-1, 0, 1]:
+        for dc in [-1, 0, 1]:
+            if dr != 0 or dc != 0:
+                r, c = row + dr, col + dc
+                if 0 <= r < ROWS and 0 <= c < COLS and grid[r][c] == 9:
+                    count += 1
+
+    return count
+
 # 그리드 내부의 셀 열기 (재귀적으로 주변 셀을 열도록 구현)
 def reveal_cells(row, col):
     if row < 0 or row >= ROWS or col < 0 or col >= COLS or revealed[row][col] or flagged[row][col]:
@@ -108,7 +123,7 @@ while True:
                     pygame.draw.rect(screen, GRAY, cell_rect)
                     if grid[row][col] > 0:  # 주변 지뢰 개수를 표시
                         font = pygame.font.SysFont(None, 30)
-                        num_mines = grid[row][col]
+                        num_mines = count_surrounding_mines(row, col)
                         text_surface = font.render(str(num_mines), True, WHITE)
                         text_rect = text_surface.get_rect(center=cell_rect.center)
                         screen.blit(text_surface, text_rect)
