@@ -17,7 +17,7 @@ BLACK = (0, 0, 0)
 GRAY = (150, 150, 150)
 RED = (255, 0, 0)
 
-# 게임 보드 초기화
+# 보드 정보 초기화
 board = [[0 for _ in range(COLS)] for _ in range(ROWS)]
 mines = set(random.sample(range(ROWS * COLS), 10))
 
@@ -36,7 +36,7 @@ def calculate_mine_counts():
 
 # 셀을 열어서 지뢰를 확인하는 함수
 def open_cell(row, col):
-    if 0 <= row < ROWS and 0 <= col < COLS and board[row][col] != "M" and board[row][col] != -1:
+    if 0 <= row < ROWS and 0 <= col < COLS and board[row][col] != -1:
         board[row][col] = -1  # -1은 셀이 열렸음을 표시
 
         if board[row][col] == 0:
@@ -46,10 +46,6 @@ def open_cell(row, col):
                         continue
                     open_cell(row + i, col + j)
 
-        return True
-
-    return False
-
 # 게임 보드를 그리는 함수
 def draw_board(screen):
     for row in range(ROWS):
@@ -57,7 +53,7 @@ def draw_board(screen):
             x, y = col * CELL_SIZE, row * CELL_SIZE
             cell = pygame.Rect(x, y, CELL_SIZE, CELL_SIZE)
 
-            if board[row][col] == 0:
+            if board[row][col] != -1:
                 pygame.draw.rect(screen, GRAY, cell)
             else:
                 pygame.draw.rect(screen, WHITE, cell)
@@ -92,8 +88,8 @@ def main():
                         pygame.quit()
                         sys.exit()
                     else:
-                        if open_cell(row, col):
-                            calculate_mine_counts()
+                        open_cell(row, col)
+                        calculate_mine_counts()
 
         screen.fill(BLACK)
         draw_board(screen)
