@@ -46,6 +46,10 @@ def open_cell(row, col):
                         continue
                     open_cell(row + i, col + j)
 
+        return True
+
+    return False
+
 # 게임 보드를 그리는 함수
 def draw_board(screen):
     for row in range(ROWS):
@@ -80,16 +84,23 @@ def main():
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                col, row = x // CELL_SIZE, y // CELL_SIZE
+
                 if event.button == 1:  # 마우스 왼쪽 버튼 클릭
-                    x, y = event.pos
-                    col, row = x // CELL_SIZE, y // CELL_SIZE
                     if board[row][col] == "M":
                         print("Game Over!")
                         pygame.quit()
                         sys.exit()
                     else:
-                        open_cell(row, col)
-                        calculate_mine_counts()
+                        if open_cell(row, col):
+                            calculate_mine_counts()
+
+                elif event.button == 3:  # 마우스 오른쪽 버튼 클릭
+                    if board[row][col] == 0:  # 셀이 열려있지 않을 때만 깃발 꽂기
+                        board[row][col] = "F"
+                    elif board[row][col] == "F":  # 깃발이 꽂혀있을 때 다시 빈 셀로 되돌리기
+                        board[row][col] = 0
 
         screen.fill(BLACK)
         draw_board(screen)
