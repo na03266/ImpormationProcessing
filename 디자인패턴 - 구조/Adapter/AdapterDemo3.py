@@ -82,3 +82,11 @@ class KakaoSocialNetworkAuthAdapter(SocialNetworkAuthTarget): #카카오 어댑�
 
     def get_token(self):
         return self.kakao_account.get_auth_token()
+
+class SocialNetworkAuthService: # 로그인 메서드 생성
+    @staticmethod
+    def social_login(social_network_auth_target):
+        print("소셜 로그인을 시작합니다.")
+        print("이용하는 서비스:", social_network_auth_target.get_service_name())
+        print("이름:", social_network_auth_target.get_user_name())
+        print("토큰:", social_network_auth_target.get_token())
