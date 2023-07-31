@@ -47,3 +47,17 @@ class Circle:
 
     def draw(self):
         print(f"Circle [color={self.color}, x={self.x}, y={self.y}, radius={self.radius}]")
+
+class ShapeFactory:
+    _circle_map = {}
+
+    @classmethod
+    def get_circle(cls, color):
+        circle = cls._circle_map.get(color)
+
+        if circle is None:
+            circle = Circle(color)
+            cls._circle_map[color] = circle
+            print(f"==== 새로운 객체 생성 : {color}색 원 ====")
+
+        return circle
