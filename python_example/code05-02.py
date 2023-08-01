@@ -12,3 +12,5 @@ label2.pack()
 label3.pack()
 
 window.mainloop()
+
+#오류가 많던데 나중에 고쳐둘것
