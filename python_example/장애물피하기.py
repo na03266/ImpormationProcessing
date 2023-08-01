@@ -38,4 +38,9 @@ def create_obstacle():
     x = random.randint(-380, 380)
     y = random.randint(-280, 280)
     obstacle.goto(x, y)
-    return
+    return obstacle  # Add "obstacle" as the return value
+
+# List to store the obstacles
+obstacles = []
+
+# Rest of the code remains the same
