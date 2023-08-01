@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 
 # Pygame 초기화
 pygame.init()
@@ -36,3 +37,21 @@ while True:
     draw_grid()
 
     pygame.display.update()
+
+
+# 지뢰 개수 설정
+    NUM_MINES = 10
+
+# 지뢰 랜덤 배치
+    def place_mines():
+        mines = random.sample(range(ROWS * COLS), NUM_MINES)
+        grid = [[0 for _ in range(COLS)] for _ in range(ROWS)]
+
+        for mine in mines:
+            row, col = divmod(mine, COLS)
+            grid[row][col] = 1
+
+        return grid
+
+    grid = place_mines()
+    print(grid)  # 지뢰가 있는 위치는 1로 표시됩니다.
