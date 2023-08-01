@@ -17,7 +17,7 @@ root = tk.Tk()
 root.title("Text File Viewer")
 
 # Load the background image
-bg_image = tk.PhotoImage(file="C:/Users/user/Desktop/source (2)/GIF/dog13.gif")
+bg_image = tk.PhotoImage(file="C:/Users/user/Desktop/wind.gif")
 
 # Create a label to hold the background image
 background_label = tk.Label(root, image=bg_image)
@@ -36,7 +36,7 @@ file_menu.add_command(label="Open", command=open_file)
 file_menu.add_command(label="Close", command=close_file)
 
 # Create a text widget to display file content
-text = tk.Text(root, wrap=tk.WORD)
+text = tk.Text(root, wrap=tk.WORD, font=("Helvetica", 12))  # Change the font here
 text.pack(expand=True, fill='both')
 
 # Run the main event loop
