@@ -13,9 +13,8 @@ def func_exit() :
 
 window = Tk()
 
-window.geometry("500x500")
-window.title("명화 감상하기")
-
+window.geometry("500x500") # 창 크기 정하기 ( 현재 500ㅌ)
+window.title("명화 감상하기") # 창 이름 정하기 
 photo = PhotoImage()
 pLabel = Label(window, image=photo)
 pLabel.pack(expand=1,anchor = CENTER)
