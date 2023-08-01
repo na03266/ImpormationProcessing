@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+from PIL import Image, ImageTk
 
 def open_file():
     file_path = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
@@ -16,8 +17,9 @@ def close_file():
 root = tk.Tk()
 root.title("Text File Viewer")
 
-# Load the background image
-bg_image = tk.PhotoImage(file="C:/Users/user/Desktop/wind.gif")
+# Load the background image using Pillow
+bg_image = Image.open("C:/Users/user/Desktop/moon.jpg")
+bg_image = ImageTk.PhotoImage(bg_image)
 
 # Create a label to hold the background image
 background_label = tk.Label(root, image=bg_image)
@@ -41,3 +43,4 @@ text.pack(expand=True, fill='both')
 
 # Run the main event loop
 root.mainloop()
+
