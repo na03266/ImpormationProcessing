@@ -40,16 +40,9 @@ if __name__ == "__main__":
         .set_bluetooth_enabled(True) \
         .set_graphics_card_enabled(True) \
         .build()
-    
 
-    # Computer 객체 생성
-comp = Computer.ComputerBuilder("500 GB", "2 GB") \
-    .set_bluetooth_enabled(True) \
-    .set_graphics_card_enabled(True) \
-    .build()
-
-# 속성 확인
-print("HDD:", comp.get_hdd())  # 출력: HDD: 500 GB
-print("RAM:", comp.get_ram())  # 출력: RAM: 2 GB
-print("Graphics Card Enabled:", comp.is_graphics_card_enabled())  # 출력: Graphics Card Enabled: True
-print("Bluetooth Enabled:", comp.is_bluetooth_enabled())  # 출력: Bluetooth Enabled: True
+    # 속성 확인
+    print("HDD:", comp.get_hdd())  # 출력: HDD: 500 GB
+    print("RAM:", comp.get_ram())  # 출력: RAM: 2 GB
+    print("Graphics Card Enabled:", comp.is_graphics_card_enabled())  # 출력: Graphics Card Enabled: True
+    print("Bluetooth Enabled:", comp.is_bluetooth_enabled())  # 출력: Bluetooth Enabled: True
