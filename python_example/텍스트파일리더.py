@@ -2,10 +2,10 @@ import pyttsx3
 
 def read_text_file(file_path):
     try:
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r') as file: #파일 읽기 
             content = file.read()
             return content
-    except FileNotFoundError:
+    except FileNotFoundError: #파일이 탐색되지 않아 에러가 뜰 경우 
         print("File not found.")
         return None
     except IOError as e:
