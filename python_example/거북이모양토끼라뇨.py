@@ -10,9 +10,9 @@ rabbit.shape("turtle")
 rabbit.color("brown")
 rabbit.penup()
 
-# Function to move the rabbit forward
+# Function to move the rabbit forward by 500 units
 def move_forward():
-    rabbit.forward(20)
+    rabbit.forward(500)
 
 # Function to turn the rabbit left
 def turn_left():
