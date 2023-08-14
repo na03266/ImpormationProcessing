@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class SocialNetworkAuthTarget(ABC):
+class SocialNetworkAuthTarget(ABC): 
     @abstractmethod
     def get_service_name(self):
         pass
@@ -78,7 +78,7 @@ class InflearnSocialNetworkAuthAdapter(SocialNetworkAuthTarget):
 
 class SocialNetworkAuthService:
     @staticmethod
-    def social_login(social_network_auth_target):
+    def social_login(social_network_auth_target): #Adapter pattern을 통한 sociallogin()method사용
         print("소셜 로그인을 시작합니다.")
         print("이용하는 서비스:", social_network_auth_target.get_service_name())
         print("이름:", social_network_auth_target.get_user_name())
