@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+#추상적인 소리 클래스 / 구체적인 소리 클래스를 나눠 표현을 달리함
 
 # 추상 동물 종류 클래스
 class AnimalType(ABC):
