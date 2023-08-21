@@ -33,3 +33,5 @@ adapter = DogAdapter(dog)
 
 print(dog_sound.make_sound())  # 출력 결과: 멍멍!
 print(adapter.make_sound())    # 출력 결과: 멍멍!
+
+#해당 어댑터 패턴을 사용하여 동물의 종류와 소리를 별개의 클래스 (추상클/기본클)로 나누어 관리
