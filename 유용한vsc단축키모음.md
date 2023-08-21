@@ -1,4 +1,4 @@
-문서 작성 시 참고..를 가장한 인용 90% 영상 = https://youtu.be/mh-0twurNRE
+문서 작성 시 참고..를 가장한 인용 95% 영상 = https://youtu.be/mh-0twurNRE
 
 
 Peek
