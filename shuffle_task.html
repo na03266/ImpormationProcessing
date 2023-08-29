@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Shuffler</title>
+</head>
+<body>
+  <div class="container">
+    <div class="slots">
+      <textarea class="slot" placeholder="Enter text 1"></textarea>
+    </div>
+    <button id="addWordBtn">Add Word</button>-
+    <button id="shuffleBtn">Shuffle Texts</button>
+    <div class="result"></div>
+  </div>
+
+  <script>
+    function setup() {
+      document.getElementById("addWordBtn").addEventListener("click", function () {
+        const slotsContainer = document.querySelector(".slots");
+        const slot = document.createElement("textarea");
+        slot.className = "slot";
+        slot.placeholder = "Enter text " + (slotsContainer.children.length + 1);
+        slotsContainer.appendChild(slot);
+      });
+
+      document.getElementById("shuffleBtn").addEventListener("click", function () {
+        const slots = document.getElementsByClassName("slot");
+        const texts = [];
+
+        // Collect texts from each slot
+        for (let slot of slots) {
+          texts.push(slot.value.trim());
+        }
+
+        // Shuffle the texts randomly
+        shuffleArray(texts);
+
+        // Display the shuffled texts
+        const resultContainer = document.querySelector(".result");
+        resultContainer.innerText = texts.join("\n\n");
+      });
+
+      // Function to shuffle an array using the Fisher-Yates algorithm
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+    }
+
+    window.addEventListener("load", setup);
+  </script>
+</body>
+</html>
